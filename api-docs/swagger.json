@@ -1,0 +1,4086 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "This is a API Service for Saijo club and Saijo Eapp Server.You can use the api key `special-key` to test the authorization filters. production URi is https://api.saijo-denki.com",
+    "version": "1.0.0",
+    "title": "Saijo Denki E-Service",
+    "termsOfService": "",
+    "contact": {
+      "email": "aceword2u@gmail.com"
+    }
+  },
+  "host": "api.saijo-denki.com",
+  "tags": [
+    {
+      "name": "Password"
+    },
+    {
+      "name": "Validate"
+    },
+    {
+      "name": "E-Warranty"
+    },
+    {
+      "name": "Logout"
+    },
+    {
+      "name": "Core - Auth",
+      "description": "Everything about your Authentication",
+      "externalDocs": {
+        "url": "https://api.saijo-denki.com"
+      }
+    },
+    {
+      "name": "Core - User"
+    },
+    {
+      "name": "Core - Jobs"
+    },
+    {
+      "name": "Core - Device"
+    },
+    {
+      "name": "Core - Widget"
+    },
+    {
+      "name": "Core - Manual"
+    },
+    {
+      "name": "Core - Payment"
+    },
+    {
+      "name": "Club - Auth"
+    },
+    {
+      "name": "Club - User"
+    },
+    {
+      "name": "Club - Jobs"
+    },
+    {
+      "name": "Club - Notification"
+    },
+    {
+      "name": "Club - Error Code"
+    },
+    {
+      "name": "Club - Summary"
+    }
+  ],
+  "schemes": [
+    "https",
+    "http"
+  ],
+  "paths": {
+    "/v1/auth": {
+      "post": {
+        "tags": [
+          "Core - Auth"
+        ],
+        "summary": "User Register",
+        "description": "",
+        "operationId": "AuthRegister",
+        "consumes": [
+          "multipart/form-data"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "formData",
+            "name": "email",
+            "type": "string",
+            "description": "demo core@test.com",
+            "required": true
+          },
+          {
+            "in": "formData",
+            "name": "password",
+            "type": "string",
+            "description": "demo: 123456",
+            "required": true
+          },
+          {
+            "in": "formData",
+            "name": "name",
+            "type": "string",
+            "description": "demo: Hello",
+            "required": true
+          },
+          {
+            "in": "formData",
+            "name": "lastname",
+            "type": "string",
+            "description": "demo: World",
+            "required": true
+          },
+          {
+            "in": "formData",
+            "name": "telephone",
+            "type": "string",
+            "description": "demo: 0812345678",
+            "required": true
+          },
+          {
+            "in": "formData",
+            "name": "device_id",
+            "type": "string",
+            "description": "demo: eC0gAdkLT9w:APA91bHs6PXTOcJ-WgpDqKsmbdbjJmI-lgDqAENU6pOl3oedpXrOfnZpnh4PyxItpPA30hzuLr6TtvBFxZS3ImT2ms6dpuqGFiQypFBf9OkNzCV8tCf-Erj7GThEZL5Rf9h5yem2VlA9",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "User successfully registered."
+          },
+          "400": {
+            "description": "Register fail., Register Fail, This name has been registered."
+          }
+        }
+      }
+    },
+    "/v1/auth/login": {
+      "post": {
+        "tags": [
+          "Core - Auth"
+        ],
+        "summary": "User Login",
+        "description": "",
+        "operationId": "AuthLogin",
+        "consumes": [
+          "multipart/form-data"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "formData",
+            "name": "email",
+            "type": "string",
+            "description": "demo core@test.com",
+            "required": true
+          },
+          {
+            "in": "formData",
+            "name": "password",
+            "type": "string",
+            "description": "demo: 123456",
+            "required": true
+          },
+          {
+            "in": "formData",
+            "name": "device_id",
+            "type": "string",
+            "description": "demo: eC0gAdkLT9w:APA91bHs6PXTOcJ-WgpDqKsmbdbjJmI-lgDqAENU6pOl3oedpXrOfnZpnh4PyxItpPA30hzuLr6TtvBFxZS3ImT2ms6dpuqGFiQypFBf9OkNzCV8tCf-Erj7GThEZL5Rf9h5yem2VlA9",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "400": {
+            "description": "Login fail."
+          }
+        }
+      }
+    },
+    "/v1/auth/login_facebook": {
+      "post": {
+        "tags": [
+          "Core - Auth"
+        ],
+        "summary": "Facebook Login",
+        "description": "Use this url to login https://api.saijo-denki.com/user_authentication",
+        "operationId": "facebooklogin",
+        "consumes": [
+          "multipart/form-data"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "formData",
+            "name": "fb_token",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "device_id",
+            "type": "string",
+            "description": "demo: eC0gAdkLT9w:APA91bHs6PXTOcJ-WgpDqKsmbdbjJmI-lgDqAENU6pOl3oedpXrOfnZpnh4PyxItpPA30hzuLr6TtvBFxZS3ImT2ms6dpuqGFiQypFBf9OkNzCV8tCf-Erj7GThEZL5Rf9h5yem2VlA9",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Facebook login successfully."
+          },
+          "400": {
+            "description": "Facebook login fail."
+          }
+        }
+      }
+    },
+    "/v1/auth/login_apple": {
+      "post": {
+        "tags": [
+          "Core - Auth"
+        ],
+        "summary": "Apple Login",
+        "description": "",
+        "operationId": "apple_login",
+        "consumes": [
+          "multipart/form-data"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "formData",
+            "name": "email",
+            "type": "string",
+            "required": true
+          },
+          {
+            "in": "formData",
+            "name": "name",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "lastname",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "device_id",
+            "type": "string",
+            "description": "demo: eC0gAdkLT9w:APA91bHs6PXTOcJ-WgpDqKsmbdbjJmI-lgDqAENU6pOl3oedpXrOfnZpnh4PyxItpPA30hzuLr6TtvBFxZS3ImT2ms6dpuqGFiQypFBf9OkNzCV8tCf-Erj7GThEZL5Rf9h5yem2VlA9",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Facebook login successfully."
+          },
+          "400": {
+            "description": "Facebook login fail."
+          }
+        }
+      }
+    },
+    "/v1/user": {
+      "get": {
+        "tags": [
+          "Core - User"
+        ],
+        "summary": "Get User Information",
+        "description": "",
+        "operationId": "getUserInfo",
+        "consumes": [
+          "multipart/form-data"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "400": {
+            "description": "Technician infotmation not found."
+          },
+          "405": {
+            "description": "You do not have permission to access."
+          },
+          "408": {
+            "description": "Request time out."
+          }
+        },
+        "security": [
+          {
+            "auth_token": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "Core - User"
+        ],
+        "summary": "Update User Information",
+        "description": "",
+        "operationId": "postUserInfo",
+        "consumes": [
+          "multipart/form-data"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "formData",
+            "name": "profile_img",
+            "type": "file",
+            "description": "Profile image"
+          },
+          {
+            "in": "formData",
+            "name": "name",
+            "type": "string",
+            "description": "Name"
+          },
+          {
+            "in": "formData",
+            "name": "lastname",
+            "type": "string",
+            "description": "Lastname"
+          },
+          {
+            "in": "formData",
+            "name": "tel",
+            "type": "string",
+            "description": "Tel"
+          },
+          {
+            "in": "formData",
+            "name": "email",
+            "type": "string",
+            "description": "Email"
+          },
+          {
+            "in": "formData",
+            "name": "latitude",
+            "type": "string",
+            "description": "Latitude"
+          },
+          {
+            "in": "formData",
+            "name": "longitude",
+            "type": "string",
+            "description": "Longitude"
+          },
+          {
+            "in": "formData",
+            "name": "address",
+            "type": "string",
+            "description": "Address"
+          },
+          {
+            "in": "formData",
+            "name": "district",
+            "type": "string",
+            "description": "District"
+          },
+          {
+            "in": "formData",
+            "name": "province",
+            "type": "string",
+            "description": "Province"
+          },
+          {
+            "in": "formData",
+            "name": "postal_code",
+            "type": "string",
+            "description": "Postal Code"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Update technician information successful."
+          },
+          "400": {
+            "description": "Update technician information fail., Technician infotmation not found."
+          },
+          "405": {
+            "description": "You do not have permission to access."
+          },
+          "408": {
+            "description": "Request time out."
+          }
+        },
+        "security": [
+          {
+            "auth_token": []
+          }
+        ]
+      }
+    },
+    "/v1/rating": {
+      "put": {
+        "tags": [
+          "Core - User"
+        ],
+        "summary": "Rate the technician",
+        "description": "",
+        "operationId": "rating",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Rating",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Rating"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "400": {
+            "description": "Unsuccessful rating."
+          },
+          "405": {
+            "description": "You do not have permission to access."
+          },
+          "408": {
+            "description": "Request time out."
+          }
+        },
+        "security": [
+          {
+            "auth_token": []
+          }
+        ]
+      }
+    },
+    "/v1/cus_tech": {
+      "get": {
+        "tags": [
+          "Core - User"
+        ],
+        "summary": "Get Personal Technician",
+        "description": "",
+        "operationId": "get_cus_tech",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "202": {
+            "description": "Personal technician not found."
+          },
+          "405": {
+            "description": "You do not have permission to access."
+          },
+          "408": {
+            "description": "Request time out."
+          }
+        },
+        "security": [
+          {
+            "auth_token": []
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "Core - User"
+        ],
+        "summary": "Update Personal Technician",
+        "description": "",
+        "operationId": "cus_tech",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Tech ID",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/TechID"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "400": {
+            "description": "Update personal technician fail."
+          },
+          "405": {
+            "description": "You do not have permission to access."
+          },
+          "408": {
+            "description": "Request time out."
+          }
+        },
+        "security": [
+          {
+            "auth_token": []
+          }
+        ]
+      }
+    },
+    "/v1/user/check_core_account_validate": {
+      "get": {
+        "tags": [
+          "Core - User"
+        ],
+        "summary": "Check Validate Account",
+        "description": "",
+        "operationId": "core_check_validate",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "400": {
+            "description": "Infotmation not found."
+          },
+          "405": {
+            "description": "You do not have permission to access."
+          },
+          "408": {
+            "description": "Request time out."
+          }
+        },
+        "security": [
+          {
+            "auth_token": []
+          }
+        ]
+      }
+    },
+    "/v1/user/check_account_validate": {
+      "get": {
+        "tags": [
+          "Club - User"
+        ],
+        "summary": "Check Validate Account",
+        "description": "",
+        "operationId": "check_validate",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "400": {
+            "description": "Infotmation not found."
+          },
+          "405": {
+            "description": "You do not have permission to access."
+          },
+          "408": {
+            "description": "Request time out."
+          }
+        },
+        "security": [
+          {
+            "auth_token": []
+          }
+        ]
+      }
+    },
+    "/v1/user/check_saijo_certification": {
+      "get": {
+        "tags": [
+          "Club - User"
+        ],
+        "summary": "Check Certification",
+        "description": "",
+        "operationId": "check_certification",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "400": {
+            "description": "Infotmation not found."
+          },
+          "405": {
+            "description": "You do not have permission to access."
+          },
+          "408": {
+            "description": "Request time out."
+          }
+        },
+        "security": [
+          {
+            "auth_token": []
+          }
+        ]
+      }
+    },
+    "/v1/user/certification_info": {
+      "get": {
+        "tags": [
+          "Club - User"
+        ],
+        "summary": "Certification Information",
+        "description": "",
+        "operationId": "certification_info",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "400": {
+            "description": "Infotmation not found."
+          },
+          "405": {
+            "description": "You do not have permission to access."
+          },
+          "408": {
+            "description": "Request time out."
+          }
+        },
+        "security": [
+          {
+            "auth_token": []
+          }
+        ]
+      }
+    },
+    "/v1/user/certification_info/{tech_id}": {
+      "get": {
+        "tags": [
+          "Core - User"
+        ],
+        "summary": "Certification Information",
+        "description": "",
+        "operationId": "cus_certification_info",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/tech_id"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "400": {
+            "description": "Personal technician not found."
+          },
+          "405": {
+            "description": "You do not have permission to access."
+          },
+          "408": {
+            "description": "Request time out."
+          }
+        },
+        "security": [
+          {
+            "auth_token": []
+          }
+        ]
+      }
+    },
+    "/v1/user/technician_online": {
+      "get": {
+        "tags": [
+          "Core - User"
+        ],
+        "summary": "Technician Online",
+        "description": "",
+        "operationId": "tech_online",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "400": {
+            "description": "Information not found."
+          },
+          "405": {
+            "description": "You do not have permission to access."
+          },
+          "408": {
+            "description": "Request time out."
+          }
+        },
+        "security": [
+          {
+            "auth_token": []
+          }
+        ]
+      }
+    },
+    "/v1/user/technician_info/{tech_id}": {
+      "get": {
+        "tags": [
+          "Core - User"
+        ],
+        "summary": "Technician Infomation",
+        "description": "",
+        "operationId": "tech_information",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/tech_id"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "400": {
+            "description": "Technician infotmation not found."
+          },
+          "405": {
+            "description": "You do not have permission to access."
+          },
+          "408": {
+            "description": "Request time out."
+          }
+        },
+        "security": [
+          {
+            "auth_token": []
+          }
+        ]
+      }
+    },
+    "/v1/jobs/job": {
+      "post": {
+        "tags": [
+          "Core - Jobs"
+        ],
+        "summary": "Create Job",
+        "description": "Create Job",
+        "operationId": "create_job",
+        "consumes": [
+          "multipart/form-data"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "formData",
+            "name": "tech_id",
+            "type": "string",
+            "description": "Tech ID"
+          },
+          {
+            "in": "formData",
+            "name": "serial",
+            "type": "string",
+            "description": "Serial",
+            "required": true
+          },
+          {
+            "in": "formData",
+            "name": "symptom",
+            "type": "string",
+            "description": "Symptom",
+            "required": true
+          },
+          {
+            "in": "formData",
+            "name": "appointment_datetime",
+            "type": "string",
+            "description": "Appointment Datetime",
+            "required": true
+          },
+          {
+            "in": "formData",
+            "name": "telephone",
+            "type": "string",
+            "description": "Telephone",
+            "required": true
+          },
+          {
+            "in": "formData",
+            "name": "latitude",
+            "type": "string",
+            "description": "Latitude",
+            "required": true
+          },
+          {
+            "in": "formData",
+            "name": "longitude",
+            "type": "string",
+            "description": "Longitude",
+            "required": true
+          },
+          {
+            "in": "formData",
+            "name": "type",
+            "type": "number",
+            "enum": [
+              1,
+              2,
+              3
+            ],
+            "description": "Type",
+            "required": true
+          },
+          {
+            "in": "formData",
+            "name": "img_1",
+            "type": "file",
+            "description": "Problem image 1"
+          },
+          {
+            "in": "formData",
+            "name": "img_2",
+            "type": "file",
+            "description": "Problem image 2"
+          },
+          {
+            "in": "formData",
+            "name": "img_3",
+            "type": "file",
+            "description": "Problem image 3"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "400": {
+            "description": "Technician not found."
+          },
+          "405": {
+            "description": "You do not have permission to access."
+          },
+          "408": {
+            "description": "Request time out."
+          }
+        },
+        "security": [
+          {
+            "auth_token": []
+          }
+        ]
+      }
+    },
+    "/v1/jobs/upload_img/": {
+      "post": {
+        "tags": [
+          "Core - Jobs"
+        ],
+        "summary": "Upload image problem (Test)",
+        "description": "Upload image problem (Test)",
+        "operationId": "image_problem",
+        "consumes": [
+          "multipart/form-data"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "formData",
+            "name": "img_1",
+            "type": "file",
+            "description": "Problem image"
+          },
+          {
+            "in": "formData",
+            "name": "img_2",
+            "type": "file",
+            "description": "Problem image"
+          },
+          {
+            "in": "formData",
+            "name": "img_3",
+            "type": "file",
+            "description": "Problem image"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "400": {
+            "description": "Technician not found."
+          },
+          "405": {
+            "description": "You do not have permission to access."
+          },
+          "408": {
+            "description": "Request time out."
+          }
+        },
+        "security": [
+          {
+            "auth_token": []
+          }
+        ]
+      }
+    },
+    "/v1/jobs/job_area": {
+      "post": {
+        "tags": [
+          "Core - Jobs"
+        ],
+        "summary": "Send job in area",
+        "description": "Send job in area",
+        "operationId": "job_area",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "400": {
+            "description": "Technician not found."
+          },
+          "405": {
+            "description": "You do not have permission to access."
+          },
+          "408": {
+            "description": "Request time out."
+          }
+        },
+        "security": [
+          {
+            "auth_token": []
+          }
+        ]
+      }
+    },
+    "/v1/jobs/tech_around": {
+      "get": {
+        "tags": [
+          "Core - Jobs"
+        ],
+        "summary": "Customer Cancel Job",
+        "description": "Get technician around customer range.",
+        "operationId": "tech_around",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "400": {
+            "description": "Technician not found."
+          },
+          "405": {
+            "description": "You do not have permission to access."
+          },
+          "408": {
+            "description": "Request time out."
+          }
+        },
+        "security": [
+          {
+            "auth_token": []
+          }
+        ]
+      }
+    },
+    "/v1/jobs/job_cancel/{job_id}": {
+      "put": {
+        "tags": [
+          "Core - Jobs"
+        ],
+        "summary": "Customer Cancel Job",
+        "description": "Customer Cancel Job",
+        "operationId": "cus_cancel_job",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/job_id"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "400": {
+            "description": "Technicians not found., Job cannot be canceled because the appointment time is less than 1 day."
+          },
+          "405": {
+            "description": "You do not have permission to access."
+          },
+          "408": {
+            "description": "Request time out."
+          }
+        },
+        "security": [
+          {
+            "auth_token": []
+          }
+        ]
+      }
+    },
+    "/v1/jobs/cancel_create_job/{job_id}": {
+      "put": {
+        "tags": [
+          "Core - Jobs"
+        ],
+        "summary": "Customer Cancel Job",
+        "description": "Customer Cancel Job",
+        "operationId": "cancel_create_job",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/job_id"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "400": {
+            "description": "Job cannot be canceled because the appointment time is less than 1 day."
+          },
+          "405": {
+            "description": "You do not have permission to access."
+          },
+          "408": {
+            "description": "Request time out."
+          }
+        },
+        "security": [
+          {
+            "auth_token": []
+          }
+        ]
+      }
+    },
+    "/v1/jobs/tech_province": {
+      "post": {
+        "tags": [
+          "Core - Jobs"
+        ],
+        "summary": "Search technician in province",
+        "description": "Search technician in province.",
+        "operationId": "tech_province",
+        "consumes": [
+          "multipart/form-data"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "formData",
+            "name": "province",
+            "type": "string",
+            "description": "Province",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "400": {
+            "description": "Technician not found."
+          },
+          "405": {
+            "description": "You do not have permission to access."
+          },
+          "408": {
+            "description": "Request time out."
+          }
+        },
+        "security": [
+          {
+            "auth_token": []
+          }
+        ]
+      }
+    },
+    "/v1/jobs/cus_job_info/{job_id}": {
+      "get": {
+        "tags": [
+          "Core - Jobs"
+        ],
+        "summary": "Customer Job",
+        "description": "Customer job information.",
+        "operationId": "cus_job_info",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/job_id"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "400": {
+            "description": "Job not found."
+          },
+          "405": {
+            "description": "You do not have permission to access."
+          },
+          "408": {
+            "description": "Request time out."
+          }
+        },
+        "security": [
+          {
+            "auth_token": []
+          }
+        ]
+      }
+    },
+    "/v1/jobs/cus_job_list": {
+      "get": {
+        "tags": [
+          "Core - Jobs"
+        ],
+        "summary": "Customer Job List",
+        "description": "Customer job list.",
+        "operationId": "cus_job_list",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "400": {
+            "description": "Job not found."
+          },
+          "405": {
+            "description": "You do not have permission to access."
+          },
+          "408": {
+            "description": "Request time out."
+          }
+        },
+        "security": [
+          {
+            "auth_token": []
+          }
+        ]
+      }
+    },
+    "/v1/jobs/cus_history": {
+      "get": {
+        "tags": [
+          "Core - Jobs"
+        ],
+        "summary": "Customer Job History",
+        "description": "Customer job history.",
+        "operationId": "cus_job_history",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "400": {
+            "description": "Job not found."
+          },
+          "405": {
+            "description": "You do not have permission to access."
+          },
+          "408": {
+            "description": "Request time out."
+          }
+        },
+        "security": [
+          {
+            "auth_token": []
+          }
+        ]
+      }
+    },
+    "/v1/jobs/symptoms": {
+      "get": {
+        "tags": [
+          "Core - Jobs"
+        ],
+        "summary": "Symptoms List",
+        "description": "Symptoms List.",
+        "operationId": "symptomsList",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "400": {
+            "description": "Symptoms list not found."
+          },
+          "405": {
+            "description": "You do not have permission to access."
+          },
+          "408": {
+            "description": "Request time out."
+          }
+        },
+        "security": [
+          {
+            "auth_token": []
+          }
+        ]
+      }
+    },
+    "/v1/jobs/service_list": {
+      "get": {
+        "tags": [
+          "Core - Jobs"
+        ],
+        "summary": "Service List",
+        "description": "Service List.",
+        "operationId": "serviceList",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "400": {
+            "description": "Service not found."
+          },
+          "405": {
+            "description": "You do not have permission to access."
+          },
+          "408": {
+            "description": "Request time out."
+          }
+        },
+        "security": [
+          {
+            "auth_token": []
+          }
+        ]
+      }
+    },
+    "/v1/jobs/cleaning_cost_list/{btu}": {
+      "get": {
+        "tags": [
+          "Core - Jobs"
+        ],
+        "summary": "Cleaning Cost List",
+        "description": "Cleaning Cost List",
+        "operationId": "cleaning_cost_list",
+        "parameters": [
+          {
+            "$ref": "#/parameters/btu"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "400": {
+            "description": "Service not found."
+          },
+          "405": {
+            "description": "You do not have permission to access."
+          },
+          "408": {
+            "description": "Request time out."
+          }
+        },
+        "security": [
+          {
+            "auth_token": []
+          }
+        ]
+      }
+    },
+    "/v1/jobs/service_cost_history/{job_id}": {
+      "post": {
+        "tags": [
+          "Core - Jobs"
+        ],
+        "summary": "Service Cost History",
+        "description": "Service Cost History",
+        "operationId": "service_cost_history",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/job_id"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Service Cost",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Service_fee"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "400": {
+            "description": "Technician not found."
+          },
+          "405": {
+            "description": "You do not have permission to access."
+          },
+          "408": {
+            "description": "Request time out."
+          }
+        },
+        "security": [
+          {
+            "auth_token": []
+          }
+        ]
+      }
+    },
+    "/v1/jobs/notify_operator/{job_id}": {
+      "post": {
+        "tags": [
+          "Core - Jobs"
+        ],
+        "summary": "notify_operator",
+        "description": "Notify operator when technicians do not accept jobs.",
+        "operationId": "notify_operator",
+        "consumes": [
+          "multipart/form-data"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/job_id"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "400": {
+            "description": "Token not found."
+          },
+          "405": {
+            "description": "You do not have permission to access."
+          },
+          "408": {
+            "description": "Request time out."
+          }
+        },
+        "security": [
+          {
+            "auth_token": []
+          }
+        ]
+      }
+    },
+    "/v1/device": {
+      "get": {
+        "tags": [
+          "Core - Device"
+        ],
+        "summary": "Device lists",
+        "description": "Device lists.",
+        "operationId": "getDevice",
+        "consumes": [
+          "multipart/form-data"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "400": {
+            "description": "Serial Invalid."
+          },
+          "405": {
+            "description": "You do not have permission to access."
+          },
+          "408": {
+            "description": "Request time out."
+          }
+        },
+        "security": [
+          {
+            "auth_token": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "Core - Device"
+        ],
+        "summary": "Add device",
+        "description": "Add device.",
+        "operationId": "postDevice",
+        "consumes": [
+          "multipart/form-data"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "formData",
+            "name": "serial",
+            "type": "string",
+            "description": "demo: 2810F00000002",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "400": {
+            "description": "This device already added., You can't add more than 16 devices., Serial Invalid."
+          },
+          "405": {
+            "description": "You do not have permission to access."
+          },
+          "408": {
+            "description": "Request time out."
+          }
+        },
+        "security": [
+          {
+            "auth_token": []
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "Core - Device"
+        ],
+        "summary": "Remove device",
+        "description": "Remove device.",
+        "operationId": "deleteDevice",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "demo: 2810F00000002",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Serial"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "400": {
+            "description": "Serial Invalid."
+          },
+          "405": {
+            "description": "You do not have permission to access."
+          },
+          "408": {
+            "description": "Request time out."
+          }
+        },
+        "security": [
+          {
+            "auth_token": []
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "Core - Device"
+        ],
+        "summary": "Update Command",
+        "description": "Update Command",
+        "operationId": "updateCommand",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "serial: 2810F00000002, cmd: 434d442b000000000000000000000000000000000000000000000000000000000000000080020000000000000000000000000000000000000000000000000000",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Cmd"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "400": {
+            "description": "Serial Invalid., Please provide command."
+          },
+          "405": {
+            "description": "You do not have permission to access."
+          },
+          "408": {
+            "description": "Request time out."
+          }
+        },
+        "security": [
+          {
+            "auth_token": []
+          }
+        ]
+      }
+    },
+    "/v1/device/air_type/{serial}": {
+      "get": {
+        "tags": [
+          "Core - Device"
+        ],
+        "summary": "Air Type",
+        "description": "Air type.",
+        "operationId": "getAirType",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/serial"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Air type is sent successfully."
+          },
+          "400": {
+            "description": "No Information type air., No Information serial."
+          },
+          "405": {
+            "description": "You do not have permission to access."
+          },
+          "408": {
+            "description": "Request time out."
+          }
+        },
+        "security": [
+          {
+            "auth_token": []
+          }
+        ]
+      }
+    },
+    "/v1/device/rename_device/{serial}": {
+      "put": {
+        "tags": [
+          "Core - Device"
+        ],
+        "summary": "Update device name",
+        "description": "Update device name.",
+        "operationId": "updateDeviceName",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/serial"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "name: Indoor0",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Device_name"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Update name successfully."
+          },
+          "400": {
+            "description": "Update name fail."
+          },
+          "405": {
+            "description": "You do not have permission to access."
+          },
+          "408": {
+            "description": "Request time out."
+          }
+        },
+        "security": [
+          {
+            "auth_token": []
+          }
+        ]
+      }
+    },
+    "/v1/device/family_list/{serial}": {
+      "get": {
+        "tags": [
+          "Core - Device"
+        ],
+        "summary": "Family List",
+        "description": "Family list.",
+        "operationId": "familyList",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/serial"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Get family list successfully."
+          },
+          "400": {
+            "description": "Get family list fail."
+          },
+          "405": {
+            "description": "You do not have permission to access."
+          },
+          "408": {
+            "description": "Request time out."
+          }
+        },
+        "security": [
+          {
+            "auth_token": []
+          }
+        ]
+      }
+    },
+    "/v1/widget/widget_list/{serial}": {
+      "get": {
+        "tags": [
+          "Core - Widget"
+        ],
+        "summary": "Get Widget List",
+        "description": "",
+        "operationId": "get_widget_list",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/serial"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "User information."
+          },
+          "400": {
+            "description": "No setting data."
+          },
+          "405": {
+            "description": "You do not have permission to access."
+          },
+          "408": {
+            "description": "Request time out."
+          }
+        },
+        "security": [
+          {
+            "auth_token": []
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "Core - Widget"
+        ],
+        "summary": "Upate Widget List",
+        "description": "",
+        "operationId": "update_widget_list",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/serial"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "function: WR,Engineer,GPS,Control",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Function_list"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "User information."
+          },
+          "400": {
+            "description": "No setting data."
+          },
+          "405": {
+            "description": "You do not have permission to access."
+          },
+          "408": {
+            "description": "Request time out."
+          }
+        },
+        "security": [
+          {
+            "auth_token": []
+          }
+        ]
+      }
+    },
+    "/v1/widget/energy_day/{serial}": {
+      "get": {
+        "tags": [
+          "Core - Widget"
+        ],
+        "summary": "Electric bill last 30 days.",
+        "description": "Electric bill last 30 days.",
+        "operationId": "getEnergyDay",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/serial"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Energy information."
+          },
+          "400": {
+            "description": "Energy information not found., Serial Invalid."
+          },
+          "405": {
+            "description": "You do not have permission to access."
+          },
+          "408": {
+            "description": "Request time out."
+          }
+        },
+        "security": [
+          {
+            "auth_token": []
+          }
+        ]
+      }
+    },
+    "/v1/widget/energy_month/{serial}": {
+      "get": {
+        "tags": [
+          "Core - Widget"
+        ],
+        "summary": "Electric bill last 12 months.",
+        "description": "Electric bill last 12 months.",
+        "operationId": "getEnergyMonth",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/serial"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Energy information."
+          },
+          "400": {
+            "description": "Energy information not found., Serial Invalid."
+          },
+          "405": {
+            "description": "You do not have permission to access."
+          },
+          "408": {
+            "description": "Request time out."
+          }
+        },
+        "security": [
+          {
+            "auth_token": []
+          }
+        ]
+      }
+    },
+    "/v1/widget/schedule/{serial}": {
+      "get": {
+        "tags": [
+          "Core - Widget"
+        ],
+        "summary": "Schedule List.",
+        "description": "Schedule List.",
+        "operationId": "getScheduleList",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/serial"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Schedule List."
+          },
+          "400": {
+            "description": "Schedule List not found"
+          },
+          "405": {
+            "description": "You do not have permission to access."
+          },
+          "408": {
+            "description": "Request time out."
+          }
+        },
+        "security": [
+          {
+            "auth_token": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "Core - Widget"
+        ],
+        "summary": "Add Schedule.",
+        "description": "Add Schedule.",
+        "operationId": "addSchedule",
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "multipart/form-data"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/serial"
+          },
+          {
+            "in": "formData",
+            "name": "timer",
+            "type": "string",
+            "description": "demo: 2020-02-12 14:30:00",
+            "required": true
+          },
+          {
+            "in": "formData",
+            "name": "utc",
+            "type": "string",
+            "description": "demo: +07:00",
+            "required": true
+          },
+          {
+            "in": "formData",
+            "name": "power",
+            "type": "string",
+            "description": "demo: OFF/ON",
+            "required": true
+          },
+          {
+            "in": "formData",
+            "name": "energy",
+            "type": "string",
+            "description": "demo: ON",
+            "required": true
+          },
+          {
+            "in": "formData",
+            "name": "set_temp",
+            "type": "string",
+            "description": "demo: 25.0",
+            "required": true
+          },
+          {
+            "in": "formData",
+            "name": "group",
+            "type": "string",
+            "description": "demo: 0",
+            "required": true
+          },
+          {
+            "in": "formData",
+            "name": "enable",
+            "type": "string",
+            "description": "demo: 1",
+            "required": true
+          },
+          {
+            "in": "formData",
+            "name": "weekday",
+            "type": "number",
+            "description": "demo: 255",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Schedule List."
+          },
+          "400": {
+            "description": "Schedule List not found"
+          },
+          "405": {
+            "description": "You do not have permission to access."
+          },
+          "408": {
+            "description": "Request time out."
+          }
+        },
+        "security": [
+          {
+            "auth_token": []
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "Core - Widget"
+        ],
+        "summary": "Update Schedule.",
+        "description": "Update Schedule.",
+        "operationId": "updateSchedule",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/serial"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Schedule"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Update schedule success."
+          },
+          "400": {
+            "description": "Update schedule fail, Schedule not found"
+          },
+          "405": {
+            "description": "You do not have permission to access."
+          },
+          "408": {
+            "description": "Request time out."
+          }
+        },
+        "security": [
+          {
+            "auth_token": []
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "Core - Widget"
+        ],
+        "summary": "Delete Schedule.",
+        "description": "Delete schedule.",
+        "operationId": "deleteSchedule",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/serial"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Mid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Delete schedule success."
+          },
+          "400": {
+            "description": "Delete schedule fail, Schedule not found"
+          },
+          "405": {
+            "description": "You do not have permission to access."
+          },
+          "408": {
+            "description": "Request time out."
+          }
+        },
+        "security": [
+          {
+            "auth_token": []
+          }
+        ]
+      }
+    },
+    "/v1/widget/schedule_info/{serial}/{mid}": {
+      "get": {
+        "tags": [
+          "Core - Widget"
+        ],
+        "summary": "Schedule Info.",
+        "description": "Schedule Info.",
+        "operationId": "getScheduleInfo",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/serial"
+          },
+          {
+            "$ref": "#/parameters/mid"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Schedule Infomation."
+          },
+          "400": {
+            "description": "Schedule Infomation not found"
+          },
+          "405": {
+            "description": "You do not have permission to access."
+          },
+          "408": {
+            "description": "Request time out."
+          }
+        },
+        "security": [
+          {
+            "auth_token": []
+          }
+        ]
+      }
+    },
+    "/v1/widget/location/{serial}": {
+      "get": {
+        "tags": [
+          "Core - Widget"
+        ],
+        "summary": "Device Location.",
+        "description": "Device Location",
+        "operationId": "getDeviceLocation",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/serial"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Device Location."
+          },
+          "400": {
+            "description": "Device Location not found"
+          },
+          "405": {
+            "description": "You do not have permission to access."
+          },
+          "408": {
+            "description": "Request time out."
+          }
+        },
+        "security": [
+          {
+            "auth_token": []
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "Core - Widget"
+        ],
+        "summary": "Update Device Location.",
+        "description": "Update Device Location",
+        "operationId": "updateDeviceLocation",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/serial"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Location"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Update device location success."
+          },
+          "400": {
+            "description": "Update device locationn fail."
+          },
+          "405": {
+            "description": "You do not have permission to access."
+          },
+          "408": {
+            "description": "Request time out."
+          }
+        },
+        "security": [
+          {
+            "auth_token": []
+          }
+        ]
+      }
+    },
+    "/v1/widget/all_location/": {
+      "get": {
+        "tags": [
+          "Core - Widget"
+        ],
+        "summary": "All Device Location.",
+        "description": "All Device Location",
+        "operationId": "getAllDeviceLocation",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Device Location."
+          },
+          "400": {
+            "description": "Device Location not found"
+          },
+          "405": {
+            "description": "You do not have permission to access."
+          },
+          "408": {
+            "description": "Request time out."
+          }
+        },
+        "security": [
+          {
+            "auth_token": []
+          }
+        ]
+      }
+    },
+    "/v1/widget/error/{error_code}": {
+      "get": {
+        "tags": [
+          "Core - Widget"
+        ],
+        "summary": "Get errors code",
+        "description": "",
+        "operationId": "getErrorCodeTitle",
+        "parameters": [
+          {
+            "$ref": "#/parameters/error_code"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "400": {
+            "description": "Error code not found."
+          },
+          "405": {
+            "description": "You do not have permission to access."
+          },
+          "408": {
+            "description": "Request time out."
+          }
+        },
+        "security": [
+          {
+            "auth_token": []
+          }
+        ]
+      }
+    },
+    "/v1/manual/manual_list": {
+      "get": {
+        "tags": [
+          "Core - Manual"
+        ],
+        "summary": "Manual List.",
+        "description": "Manual List.",
+        "operationId": "getManualList",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Manual List."
+          },
+          "400": {
+            "description": "Manual List not found"
+          },
+          "405": {
+            "description": "You do not have permission to access."
+          },
+          "408": {
+            "description": "Request time out."
+          }
+        },
+        "security": [
+          {
+            "auth_token": []
+          }
+        ]
+      }
+    },
+    "/v1/manual/manual_info/{manual_id}": {
+      "get": {
+        "tags": [
+          "Core - Manual"
+        ],
+        "summary": "Manual infomation.",
+        "description": "Manual infomation.",
+        "operationId": "getManualInfo",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/manual_id"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Manual List."
+          },
+          "400": {
+            "description": "Manual List not found"
+          },
+          "405": {
+            "description": "You do not have permission to access."
+          },
+          "408": {
+            "description": "Request time out."
+          }
+        },
+        "security": [
+          {
+            "auth_token": []
+          }
+        ]
+      }
+    },
+    "/v1/payment/payment_token/{job_id}": {
+      "post": {
+        "tags": [
+          "Core - Payment"
+        ],
+        "summary": "Payment Token.",
+        "description": "Payment Token.",
+        "operationId": "paymentToken",
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "multipart/form-data"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/job_id"
+          },
+          {
+            "in": "formData",
+            "name": "amount",
+            "type": "number",
+            "description": "Demo : 100.00",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Payment Token."
+          },
+          "400": {
+            "description": "Invalid Signature."
+          },
+          "405": {
+            "description": "You do not have permission to access."
+          },
+          "408": {
+            "description": "Request time out."
+          }
+        },
+        "security": [
+          {
+            "auth_token": []
+          }
+        ]
+      }
+    },
+    "/v1/payment/inquiry_payment/{job_id}": {
+      "post": {
+        "tags": [
+          "Core - Payment"
+        ],
+        "summary": "Inquiry Payment.",
+        "description": "Inquiry Payment.",
+        "operationId": "InquiryPayment",
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "multipart/form-data"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/job_id"
+          },
+          {
+            "in": "formData",
+            "name": "transaction_id",
+            "type": "number",
+            "description": "Demo : 2755778",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Payment Token."
+          },
+          "400": {
+            "description": "Invalid Signature."
+          },
+          "405": {
+            "description": "You do not have permission to access."
+          },
+          "408": {
+            "description": "Request time out."
+          }
+        },
+        "security": [
+          {
+            "auth_token": []
+          }
+        ]
+      }
+    },
+    "/v1/technician": {
+      "post": {
+        "tags": [
+          "Club - Auth"
+        ],
+        "summary": "Technician Register",
+        "description": "Technician Register",
+        "operationId": "TechRegister",
+        "consumes": [
+          "multipart/form-data"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "formData",
+            "name": "email",
+            "type": "string",
+            "description": "demo anon.joey@gmail.com",
+            "required": true
+          },
+          {
+            "in": "formData",
+            "name": "password",
+            "type": "string",
+            "description": "demo: 123456",
+            "required": true
+          },
+          {
+            "in": "formData",
+            "name": "name",
+            "type": "string",
+            "description": "demo: Hello",
+            "required": true
+          },
+          {
+            "in": "formData",
+            "name": "lastname",
+            "type": "string",
+            "description": "demo: World",
+            "required": true
+          },
+          {
+            "in": "formData",
+            "name": "telephone",
+            "type": "string",
+            "description": "demo: 0812345678",
+            "required": true
+          },
+          {
+            "in": "formData",
+            "name": "device_id",
+            "type": "string",
+            "description": "demo: eC0gAdkLT9w:APA91bHs6PXTOcJ-WgpDqKsmbdbjJmI-lgDqAENU6pOl3oedpXrOfnZpnh4PyxItpPA30hzuLr6TtvBFxZS3ImT2ms6dpuqGFiQypFBf9OkNzCV8tCf-Erj7GThEZL5Rf9h5yem2VlA9",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "User successfully registered."
+          },
+          "400": {
+            "description": "Register Fail, INVALID ACCOUNT REPEAT EMAIL AND FACEBOOK ID., Register Fail, This name has been registered."
+          },
+          "405": {
+            "description": "You do not have permission to access."
+          },
+          "408": {
+            "description": "Request time out."
+          }
+        }
+      }
+    },
+    "/v1/technician/login": {
+      "post": {
+        "tags": [
+          "Club - Auth"
+        ],
+        "summary": "Technician Login",
+        "description": "Technician Login",
+        "operationId": "TechLogin",
+        "consumes": [
+          "multipart/form-data"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "formData",
+            "name": "email",
+            "type": "string",
+            "description": "demo anon.joey@gmail.com",
+            "required": true
+          },
+          {
+            "in": "formData",
+            "name": "password",
+            "type": "string",
+            "description": "demo: 123456",
+            "required": true
+          },
+          {
+            "in": "formData",
+            "name": "device_id",
+            "type": "string",
+            "description": "demo: eC0gAdkLT9w:APA91bHs6PXTOcJ-WgpDqKsmbdbjJmI-lgDqAENU6pOl3oedpXrOfnZpnh4PyxItpPA30hzuLr6TtvBFxZS3ImT2ms6dpuqGFiQypFBf9OkNzCV8tCf-Erj7GThEZL5Rf9h5yem2VlA9",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "400": {
+            "description": "Can't update FCM Token., Login Fail"
+          },
+          "405": {
+            "description": "You do not have permission to access."
+          }
+        }
+      }
+    },
+    "/v1/technician/login_facebook": {
+      "post": {
+        "tags": [
+          "Club - Auth"
+        ],
+        "summary": "Technician Facebook Login",
+        "description": "Use this url to login https://api.saijo-denki.com/user_authentication",
+        "operationId": "TechFBLogin",
+        "consumes": [
+          "multipart/form-data"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "formData",
+            "name": "fb_token",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "device_id",
+            "type": "string",
+            "description": "demo eC0gAdkLT9w:APA91bHs6PXTOcJ-WgpDqKsmbdbjJmI-lgDqAENU6pOl3oedpXrOfnZpnh4PyxItpPA30hzuLr6TtvBFxZS3ImT2ms6dpuqGFiQypFBf9OkNzCV8tCf-Erj7GThEZL5Rf9h5yem2VlA9",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Facebook login successfully."
+          },
+          "400": {
+            "description": "Facebook login fail.,No authenticate."
+          }
+        }
+      }
+    },
+    "/v1/technician/info": {
+      "get": {
+        "tags": [
+          "Club - User"
+        ],
+        "summary": "Technician Infomation",
+        "description": "Technician Infomation",
+        "operationId": "get_tech_info",
+        "consumes": [
+          "multipart/form-data"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "400": {
+            "description": "Technician infotmation not found."
+          },
+          "405": {
+            "description": "You do not have permission to access."
+          }
+        },
+        "security": [
+          {
+            "auth_token": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "Club - User"
+        ],
+        "summary": "Update Technician Infomation",
+        "description": "Update Technician Infomation",
+        "operationId": "post_tech_info",
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "multipart/form-data"
+        ],
+        "parameters": [
+          {
+            "in": "formData",
+            "name": "profile_img",
+            "type": "file",
+            "description": "Profile image"
+          },
+          {
+            "in": "formData",
+            "name": "name",
+            "type": "string",
+            "description": "Name"
+          },
+          {
+            "in": "formData",
+            "name": "lastname",
+            "type": "string",
+            "description": "Lastname"
+          },
+          {
+            "in": "formData",
+            "name": "tel",
+            "type": "string",
+            "description": "Tel"
+          },
+          {
+            "in": "formData",
+            "name": "address",
+            "type": "string",
+            "description": "Address"
+          },
+          {
+            "in": "formData",
+            "name": "district",
+            "type": "string",
+            "description": "District"
+          },
+          {
+            "in": "formData",
+            "name": "province",
+            "type": "string",
+            "description": "Province"
+          },
+          {
+            "in": "formData",
+            "name": "postal_code",
+            "type": "string",
+            "description": "Postal Code"
+          },
+          {
+            "in": "formData",
+            "name": "latitude",
+            "type": "string",
+            "description": "Latitude"
+          },
+          {
+            "in": "formData",
+            "name": "longitude",
+            "type": "string",
+            "description": "Longitude"
+          },
+          {
+            "in": "formData",
+            "name": "saijo_certification",
+            "type": "string",
+            "description": "Saijo Certification"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Update technician information successful."
+          },
+          "400": {
+            "description": "Update technician information fail., Technician infotmation not found."
+          },
+          "405": {
+            "description": "You do not have permission to access."
+          },
+          "408": {
+            "description": "Request time out."
+          }
+        },
+        "security": [
+          {
+            "auth_token": []
+          }
+        ]
+      }
+    },
+    "/v1/technicians": {
+      "get": {
+        "tags": [
+          "Club - User"
+        ],
+        "summary": "Technician List",
+        "description": "Technician List",
+        "operationId": "get_tech_list",
+        "consumes": [
+          "multipart/form-data"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "400": {
+            "description": "Technician infotmation not found."
+          },
+          "405": {
+            "description": "You do not have permission to access."
+          },
+          "408": {
+            "description": "Request time out."
+          }
+        },
+        "security": [
+          {
+            "auth_token": []
+          }
+        ]
+      }
+    },
+    "/v1/jobs": {
+      "get": {
+        "tags": [
+          "Club - Jobs"
+        ],
+        "summary": "Technician Jobs List (Upcoming)",
+        "description": "Technician Jobs List",
+        "operationId": "get_tech_jobs_list",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "400": {
+            "description": "Job not found."
+          },
+          "405": {
+            "description": "You do not have permission to access."
+          },
+          "408": {
+            "description": "Request time out."
+          }
+        },
+        "security": [
+          {
+            "auth_token": []
+          }
+        ]
+      }
+    },
+    "/v1/jobs/recommend": {
+      "get": {
+        "tags": [
+          "Club - Jobs"
+        ],
+        "summary": "Technician Jobs Recommend List",
+        "description": "Technician Jobs Recommend List",
+        "operationId": "get_tech_jobs_recommend_list",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "400": {
+            "description": "Job not found."
+          },
+          "405": {
+            "description": "You do not have permission to access."
+          },
+          "408": {
+            "description": "Request time out."
+          }
+        },
+        "security": [
+          {
+            "auth_token": []
+          }
+        ]
+      }
+    },
+    "/v1/jobs/history": {
+      "get": {
+        "tags": [
+          "Club - Jobs"
+        ],
+        "summary": "Technician History Jobs List",
+        "description": "Technician History Jobs List",
+        "operationId": "get_tech_history_jobs_list",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "400": {
+            "description": "Job not found."
+          },
+          "405": {
+            "description": "You do not have permission to access."
+          },
+          "408": {
+            "description": "Request time out."
+          }
+        },
+        "security": [
+          {
+            "auth_token": []
+          }
+        ]
+      }
+    },
+    "/v1/jobs/job_info/{job_id}": {
+      "get": {
+        "tags": [
+          "Club - Jobs"
+        ],
+        "summary": "Technician Jobs Info",
+        "description": "Technician Jobs Info",
+        "operationId": "get_tech_jobs_info",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/job_id"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "400": {
+            "description": "Job not found."
+          },
+          "405": {
+            "description": "You do not have permission to access."
+          },
+          "408": {
+            "description": "Request time out."
+          }
+        },
+        "security": [
+          {
+            "auth_token": []
+          }
+        ]
+      }
+    },
+    "/v1/jobs/job_accept/{job_id}": {
+      "put": {
+        "tags": [
+          "Club - Jobs"
+        ],
+        "summary": "Technician Accept Job",
+        "description": "Technician Accept Job",
+        "operationId": "tech_accept_job",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/job_id"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "400": {
+            "description": "Customer not found."
+          },
+          "403": {
+            "description": "Job accepted by other technician., Please update user information."
+          },
+          "405": {
+            "description": "You do not have permission to access."
+          },
+          "408": {
+            "description": "Request time out."
+          }
+        },
+        "security": [
+          {
+            "auth_token": []
+          }
+        ]
+      }
+    },
+    "/v1/jobs/job_complete/{job_id}": {
+      "put": {
+        "tags": [
+          "Club - Jobs"
+        ],
+        "summary": "Technician Complete Job",
+        "description": "Technician Complete Job",
+        "operationId": "tech_complete_job",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/job_id"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "400": {
+            "description": "Customer not found."
+          },
+          "405": {
+            "description": "Job not found."
+          },
+          "408": {
+            "description": "Request time out."
+          }
+        },
+        "security": [
+          {
+            "auth_token": []
+          }
+        ]
+      }
+    },
+    "/v1/jobs/deny/{job_id}": {
+      "delete": {
+        "tags": [
+          "Club - Jobs"
+        ],
+        "summary": "Technician Deny Job",
+        "description": "Technician Deny Job",
+        "operationId": "tech_deny_job",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/job_id"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "400": {
+            "description": "Can't delete notification(s)."
+          },
+          "405": {
+            "description": "You do not have permission to access."
+          },
+          "408": {
+            "description": "Request time out."
+          }
+        },
+        "security": [
+          {
+            "auth_token": []
+          }
+        ]
+      }
+    },
+    "/v1/jobs/status_log/{job_id}": {
+      "get": {
+        "tags": [
+          "Club - Jobs"
+        ],
+        "summary": "Status Log",
+        "description": "Status Log",
+        "operationId": "get_status_log",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/job_id"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "400": {
+            "description": "Status Log not found."
+          },
+          "405": {
+            "description": "You do not have permission to access."
+          },
+          "408": {
+            "description": "Request time out."
+          }
+        },
+        "security": [
+          {
+            "auth_token": []
+          }
+        ]
+      }
+    },
+    "/v1/password": {
+      "put": {
+        "tags": [
+          "Password"
+        ],
+        "summary": "Technician Change Password",
+        "description": "Technician Change Password",
+        "operationId": "change_password",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Technician Change Password",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Password"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "400": {
+            "description": "Update password fail."
+          },
+          "405": {
+            "description": "You do not have permission to access."
+          },
+          "408": {
+            "description": "Request time out."
+          }
+        },
+        "security": [
+          {
+            "auth_token": []
+          }
+        ]
+      }
+    },
+    "/v1/forgot_password_club": {
+      "post": {
+        "tags": [
+          "Password"
+        ],
+        "summary": "Technician Forgot Password",
+        "description": "Technician Forgot Password",
+        "operationId": "forgot_password_club",
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "multipart/form-data"
+        ],
+        "parameters": [
+          {
+            "in": "formData",
+            "name": "email",
+            "type": "string",
+            "description": "demo anon.joey@gmail.com",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "400": {
+            "description": "Password change unsuccessful., Failed to send email., Email not found."
+          },
+          "405": {
+            "description": "You do not have permission to access."
+          },
+          "408": {
+            "description": "Request time out."
+          }
+        }
+      }
+    },
+    "/v1/forgot_password_core": {
+      "post": {
+        "tags": [
+          "Password"
+        ],
+        "summary": "Technician Forgot Password",
+        "description": "User Forgot Password",
+        "operationId": "forgot_password_core",
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "multipart/form-data"
+        ],
+        "parameters": [
+          {
+            "in": "formData",
+            "name": "email",
+            "type": "string",
+            "description": "demo anon.joey@gmail.com",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "400": {
+            "description": "Password change unsuccessful., Failed to send email., Email not found."
+          },
+          "405": {
+            "description": "You do not have permission to access."
+          },
+          "408": {
+            "description": "Request time out."
+          }
+        }
+      }
+    },
+    "/v1/technician/notifications": {
+      "get": {
+        "tags": [
+          "Club - Notification"
+        ],
+        "summary": "Get notification",
+        "description": "",
+        "operationId": "getTechNoti",
+        "consumes": [
+          "multipart/form-data"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "400": {
+            "description": "Notification not found."
+          },
+          "405": {
+            "description": "You do not have permission to access."
+          },
+          "408": {
+            "description": "Request time out."
+          }
+        },
+        "security": [
+          {
+            "auth_token": []
+          }
+        ]
+      }
+    },
+    "/v1/technician/notification/{job_type}": {
+      "put": {
+        "tags": [
+          "Club - Notification"
+        ],
+        "summary": "Update all notifications",
+        "description": "",
+        "operationId": "putTechNotIAll",
+        "consumes": [
+          "multipart/form-data"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/job_type"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "400": {
+            "description": "Can't update status."
+          },
+          "405": {
+            "description": "You do not have permission to access."
+          },
+          "408": {
+            "description": "Request time out."
+          }
+        },
+        "security": [
+          {
+            "auth_token": []
+          }
+        ]
+      }
+    },
+    "/v1/technician/notification/remove/{job_id}": {
+      "delete": {
+        "tags": [
+          "Club - Notification"
+        ],
+        "summary": "Remove notifications",
+        "description": "",
+        "operationId": "deleteTechNoti",
+        "consumes": [
+          "multipart/form-data"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/job_id"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "400": {
+            "description": "Can't delete notification(s)."
+          },
+          "405": {
+            "description": "You do not have permission to access."
+          },
+          "408": {
+            "description": "Request time out."
+          }
+        },
+        "security": [
+          {
+            "auth_token": []
+          }
+        ]
+      }
+    },
+    "/v1/technician/notification/read/{job_id}": {
+      "put": {
+        "tags": [
+          "Club - Notification"
+        ],
+        "summary": "Update notification",
+        "description": "",
+        "operationId": "putTechNoti",
+        "consumes": [
+          "multipart/form-data"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/job_id"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "400": {
+            "description": "Can't update status."
+          },
+          "405": {
+            "description": "You do not have permission to access."
+          },
+          "408": {
+            "description": "Request time out."
+          }
+        },
+        "security": [
+          {
+            "auth_token": []
+          }
+        ]
+      }
+    },
+    "/v1/technician/errors": {
+      "get": {
+        "tags": [
+          "Club - Error Code"
+        ],
+        "summary": "Get errors code",
+        "description": "",
+        "operationId": "getErrorCodes",
+        "consumes": [
+          "multipart/form-data"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "400": {
+            "description": "Error code not found."
+          },
+          "405": {
+            "description": "You do not have permission to access."
+          },
+          "408": {
+            "description": "Request time out."
+          }
+        },
+        "security": [
+          {
+            "auth_token": []
+          }
+        ]
+      }
+    },
+    "/v1/technician/error/{error_code}": {
+      "get": {
+        "tags": [
+          "Club - Error Code"
+        ],
+        "summary": "Get error code",
+        "description": "",
+        "operationId": "getErrorCode",
+        "parameters": [
+          {
+            "$ref": "#/parameters/error_code"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "400": {
+            "description": "Error code not found."
+          },
+          "405": {
+            "description": "You do not have permission to access."
+          },
+          "408": {
+            "description": "Request time out."
+          }
+        },
+        "security": [
+          {
+            "auth_token": []
+          }
+        ]
+      }
+    },
+    "/v1/technician/ewarranty/validate": {
+      "post": {
+        "tags": [
+          "E-Warranty"
+        ],
+        "summary": "Validate & Active Product",
+        "description": "Validate & Active Product",
+        "operationId": "validateProduct",
+        "consumes": [
+          "multipart/form-data"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "formData",
+            "name": "serial",
+            "type": "string",
+            "description": "demo : 1801C00689000",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Validate product successfully."
+          },
+          "202": {
+            "description": "Serial นี้ทำการลงทะเบียน E-Warranty แล้ว"
+          },
+          "400": {
+            "description": "ไม่มีรหัสสินค้านี้ในระบบ"
+          },
+          "405": {
+            "description": "You do not have permission to access."
+          },
+          "408": {
+            "description": "Request time out."
+          }
+        },
+        "security": [
+          {
+            "auth_token": []
+          }
+        ]
+      }
+    },
+    "/v1/technician/ewarranty/warranty_info": {
+      "post": {
+        "tags": [
+          "E-Warranty"
+        ],
+        "summary": "E-Warranty infomation",
+        "description": "E-Warranty infomation",
+        "operationId": "techInfoWarranty",
+        "consumes": [
+          "multipart/form-data"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "formData",
+            "name": "indoor_serial",
+            "type": "string",
+            "description": "demo : 1801F00689001, 8888F00000008(Test), 8888A00000008(Test)"
+          },
+          {
+            "in": "formData",
+            "name": "outdoor_serial",
+            "type": "string",
+            "description": "demo : 1801C00689000, 8888C00000008(Test)"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Serial นี้ทำการลงทะเบียน E-Warranty แล้ว,Success"
+          },
+          "400": {
+            "description": "ไม่มีรหัสสินค้านี้ในระบบ"
+          },
+          "405": {
+            "description": "You do not have permission to access."
+          },
+          "408": {
+            "description": "Request time out."
+          }
+        },
+        "security": [
+          {
+            "auth_token": []
+          }
+        ]
+      }
+    },
+    "/v1/summary/{job_id}": {
+      "get": {
+        "tags": [
+          "Club - Summary"
+        ],
+        "summary": "Summary Jobs",
+        "description": "Summary Jobs",
+        "operationId": "summaryJob",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/job_id"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "400": {
+            "description": "Get check sheet fail."
+          },
+          "405": {
+            "description": "You do not have permission to access."
+          },
+          "408": {
+            "description": "Request time out."
+          }
+        },
+        "security": [
+          {
+            "auth_token": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "Club - Summary"
+        ],
+        "summary": "Summary Jobs",
+        "description": "",
+        "operationId": "postsummaryJob",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Summary Form",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Summary"
+            }
+          },
+          {
+            "$ref": "#/parameters/job_id"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "400": {
+            "description": "Unable to notify customers., Save check sheet fail."
+          },
+          "405": {
+            "description": "You do not have permission to access."
+          },
+          "408": {
+            "description": "Request time out."
+          }
+        },
+        "security": [
+          {
+            "auth_token": []
+          }
+        ]
+      }
+    },
+    "/v1/summary/upload_pic/{job_id}/{serial}": {
+      "post": {
+        "tags": [
+          "Club - Summary"
+        ],
+        "summary": "Summary upload image",
+        "description": "",
+        "operationId": "uploadSummaryImg",
+        "consumes": [
+          "multipart/form-data"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/job_id"
+          },
+          {
+            "$ref": "#/parameters/serial"
+          },
+          {
+            "in": "formData",
+            "name": "before",
+            "type": "file",
+            "description": "Before image"
+          },
+          {
+            "in": "formData",
+            "name": "after",
+            "type": "file",
+            "description": "After image"
+          },
+          {
+            "in": "formData",
+            "name": "signature",
+            "type": "file",
+            "description": "Signature image"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "400": {
+            "description": "Update fail."
+          },
+          "405": {
+            "description": "You do not have permission to access."
+          },
+          "408": {
+            "description": "Request time out."
+          }
+        },
+        "security": [
+          {
+            "auth_token": []
+          }
+        ]
+      }
+    },
+    "/v1/summary/form_old/{job_id}": {
+      "get": {
+        "tags": [
+          "Club - Summary"
+        ],
+        "summary": "Summary Jobs",
+        "description": "Summary Jobs",
+        "operationId": "summaryJobOld",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/job_id"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "400": {
+            "description": "Get check sheet fail."
+          },
+          "405": {
+            "description": "You do not have permission to access."
+          },
+          "408": {
+            "description": "Request time out."
+          }
+        },
+        "security": [
+          {
+            "auth_token": []
+          }
+        ]
+      }
+    },
+    "/v1/summary/upload_pic_old/{job_id}": {
+      "post": {
+        "tags": [
+          "Club - Summary"
+        ],
+        "summary": "Summary upload image",
+        "description": "",
+        "operationId": "uploadSummaryImgOld",
+        "consumes": [
+          "multipart/form-data"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/job_id"
+          },
+          {
+            "in": "formData",
+            "name": "before",
+            "type": "file",
+            "description": "Before image"
+          },
+          {
+            "in": "formData",
+            "name": "after",
+            "type": "file",
+            "description": "After image"
+          },
+          {
+            "in": "formData",
+            "name": "signature",
+            "type": "file",
+            "description": "Signature image"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "400": {
+            "description": "Update fail."
+          },
+          "405": {
+            "description": "You do not have permission to access."
+          },
+          "408": {
+            "description": "Request time out."
+          }
+        },
+        "security": [
+          {
+            "auth_token": []
+          }
+        ]
+      }
+    },
+    "/v1/logout": {
+      "post": {
+        "tags": [
+          "Logout"
+        ],
+        "summary": "Logouty",
+        "description": "Logout",
+        "operationId": "logout",
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "multipart/form-data"
+        ],
+        "parameters": [
+          {
+            "in": "formData",
+            "name": "device_id",
+            "type": "string",
+            "description": "demo: eC0gAdkLT9w:APA91bHs6PXTOcJ-WgpDqKsmbdbjJmI-lgDqAENU6pOl3oedpXrOfnZpnh4PyxItpPA30hzuLr6TtvBFxZS3ImT2ms6dpuqGFiQypFBf9OkNzCV8tCf-Erj7GThEZL5Rf9h5yem2VlA9",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "400": {
+            "description": "Logout fail."
+          },
+          "405": {
+            "description": "You do not have permission to access."
+          },
+          "408": {
+            "description": "Request time out."
+          }
+        },
+        "security": [
+          {
+            "auth_token": []
+          }
+        ]
+      }
+    },
+    "/v1/check_version": {
+      "post": {
+        "tags": [
+          "Validate"
+        ],
+        "summary": "Check Version",
+        "description": "Check Version",
+        "operationId": "check_version",
+        "consumes": [
+          "multipart/form-data"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "formData",
+            "name": "app",
+            "type": "string",
+            "description": "App",
+            "enum": [
+              "club",
+              "core"
+            ],
+            "required": true
+          },
+          {
+            "in": "formData",
+            "name": "device",
+            "type": "string",
+            "description": "Device OS",
+            "enum": [
+              "android",
+              "ios"
+            ],
+            "required": true
+          },
+          {
+            "in": "formData",
+            "name": "version",
+            "type": "string",
+            "description": "demo: 1.0.0",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "202": {
+            "description": "Please update version."
+          },
+          "405": {
+            "description": "You do not have permission to access."
+          },
+          "408": {
+            "description": "Request time out."
+          }
+        },
+        "security": [
+          {
+            "auth_token": []
+          }
+        ]
+      }
+    }
+  },
+  "parameters": {
+    "user_id": {
+      "name": "user_id",
+      "description": "User ID",
+      "in": "path",
+      "type": "number",
+      "required": true
+    },
+    "job_id": {
+      "name": "job_id",
+      "description": "Job ID",
+      "in": "path",
+      "type": "number",
+      "required": true
+    },
+    "tech_id": {
+      "name": "tech_id",
+      "description": "Tech ID",
+      "in": "path",
+      "type": "number",
+      "required": true
+    },
+    "error_code": {
+      "name": "error_code",
+      "description": "Error Code",
+      "in": "path",
+      "type": "number",
+      "required": true
+    },
+    "job_type": {
+      "name": "job_type",
+      "description": "Job Type",
+      "in": "path",
+      "type": "number",
+      "required": true
+    },
+    "serial": {
+      "name": "serial",
+      "description": "demo: 2810F00000002",
+      "in": "path",
+      "type": "string",
+      "required": true
+    },
+    "device_id": {
+      "name": "device_id",
+      "description": "demo: eC0gAdkLT9w:APA91bHs6PXTOcJ-WgpDqKsmbdbjJmI-lgDqAENU6pOl3oedpXrOfnZpnh4PyxItpPA30hzuLr6TtvBFxZS3ImT2ms6dpuqGFiQypFBf9OkNzCV8tCf-Erj7GThEZL5Rf9h5yem2VlA9",
+      "in": "path",
+      "type": "string",
+      "required": true
+    },
+    "manual_id": {
+      "name": "manual_id",
+      "description": "demo: 1",
+      "in": "path",
+      "type": "number",
+      "required": true
+    },
+    "mid": {
+      "name": "mid",
+      "description": "demo: 1",
+      "in": "path",
+      "type": "number",
+      "required": true
+    },
+    "btu": {
+      "name": "btu",
+      "description": "BTU",
+      "in": "path",
+      "type": "number",
+      "required": true
+    }
+  },
+  "securityDefinitions": {
+    "petstore_auth": {
+      "type": "oauth2",
+      "authorizationUrl": "http://petstore.swagger.io/oauth/dialog",
+      "flow": "implicit",
+      "scopes": {
+        "write:pets": "modify pets in your account",
+        "read:pets": "read your pets"
+      }
+    },
+    "api_key": {
+      "type": "apiKey",
+      "name": "api_key",
+      "in": "header"
+    },
+    "auth_token": {
+      "type": "apiKey",
+      "name": "Authorization",
+      "in": "header"
+    }
+  },
+  "definitions": {
+    "Password": {
+      "type": "object",
+      "properties": {
+        "password": {
+          "type": "string"
+        }
+      },
+      "xml": {
+        "name": "User"
+      }
+    },
+    "TechID": {
+      "type": "object",
+      "properties": {
+        "tech_id": {
+          "type": "number"
+        }
+      },
+      "xml": {
+        "name": "User"
+      }
+    },
+    "Rating": {
+      "type": "object",
+      "properties": {
+        "rating": {
+          "type": "number",
+          "format": "float"
+        }
+      },
+      "xml": {
+        "name": "User"
+      }
+    },
+    "Summary": {
+      "type": "object",
+      "properties": {
+        "form": {
+          "type": "string"
+        }
+      },
+      "xml": {
+        "name": "Summary"
+      }
+    },
+    "Serial": {
+      "type": "object",
+      "properties": {
+        "serial": {
+          "type": "string"
+        }
+      },
+      "xml": {
+        "name": "Serial"
+      }
+    },
+    "Cmd": {
+      "type": "object",
+      "properties": {
+        "serial": {
+          "type": "string"
+        },
+        "command": {
+          "type": "string"
+        }
+      },
+      "xml": {
+        "name": "Cmd"
+      }
+    },
+    "Schedule": {
+      "type": "object",
+      "properties": {
+        "mid": {
+          "type": "number"
+        },
+        "timer": {
+          "type": "string"
+        },
+        "utc": {
+          "type": "string"
+        },
+        "power": {
+          "type": "string"
+        },
+        "energy": {
+          "type": "string"
+        },
+        "set_temp": {
+          "type": "number"
+        },
+        "group": {
+          "type": "number"
+        },
+        "enable": {
+          "type": "number"
+        },
+        "weekday": {
+          "type": "number"
+        }
+      },
+      "xml": {
+        "name": "Schedule"
+      }
+    },
+    "Mid": {
+      "type": "object",
+      "properties": {
+        "mid": {
+          "type": "number"
+        }
+      },
+      "xml": {
+        "name": "Schedule"
+      }
+    },
+    "Function_list": {
+      "type": "object",
+      "properties": {
+        "function": {
+          "type": "string"
+        }
+      },
+      "xml": {
+        "name": "Function_list"
+      }
+    },
+    "Device_name": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        }
+      },
+      "xml": {
+        "name": "Device_name"
+      }
+    },
+    "Location": {
+      "type": "object",
+      "properties": {
+        "mid": {
+          "type": "number"
+        },
+        "latitude": {
+          "type": "string"
+        },
+        "longitude": {
+          "type": "string"
+        }
+      },
+      "xml": {
+        "name": "Location"
+      }
+    },
+    "Service_fee": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "example": [
+            {
+              "service_id": 1,
+              "serial": 123,
+              "cost": 2000
+            }
+          ]
+        }
+      },
+      "xml": {
+        "name": "Location"
+      }
+    }
+  }
+}

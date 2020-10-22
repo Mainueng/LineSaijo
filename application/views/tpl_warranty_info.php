@@ -1,0 +1,1 @@
+<?php include_once("warranty/warranty_info_view.php");?>

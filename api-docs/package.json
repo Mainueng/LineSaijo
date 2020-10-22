@@ -1,0 +1,2314 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "This is a API Service for Saijo club and Saijo Eapp Server.You can use the api key `special-key` to test the authorization filters. production URi is https://api.saijo-denki.com",
+    "version": "1.0.0",
+    "title": "Saijo Denki E-Service",
+    "termsOfService": "",
+    "contact": {
+      "email": "aceword2u@gmail.com"
+    }
+  },
+  "host": "api.saijo-denki.com",
+  "tags": [
+    {
+      "name": "Password"
+    },
+    {
+      "name": "E-Warranty"
+    },
+    {
+      "name": "Logout"
+    },
+    {
+      "name": "Core - Auth",
+      "description": "Everything about your Authentication",
+      "externalDocs": {
+        "url": "https://api.saijo-denki.com"
+      }
+    },
+    {
+      "name": "Core - User"
+    },
+    {
+      "name": "Core - Jobs"
+    },
+    {
+      "name": "Core - Product"
+    },
+    {
+      "name": "Core - Energy"
+    },
+    {
+      "name": "Club - Auth"
+    },
+    {
+      "name": "Club - User"
+    },
+    {
+      "name": "Club - Jobs"
+    },
+    {
+      "name": "Club - Notification"
+    },
+    {
+      "name": "Club - Error Code"
+    },
+    {
+      "name": "Club - Summary"
+    }
+  ],
+  "schemes": [
+    "https",
+    "http"
+  ],
+  "paths": {
+    "/v1/auth": {
+      "post": {
+        "tags": [
+          "Core - Auth"
+        ],
+        "summary": "User Register",
+        "description": "",
+        "operationId": "AuthRegister",
+        "consumes": [
+          "multipart/form-data"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "formData",
+            "name": "email",
+            "type": "string",
+            "description": "demo core@test.com",
+            "required": true
+          },
+          {
+            "in": "formData",
+            "name": "password",
+            "type": "string",
+            "description": "demo: 123456",
+            "required": true
+          },
+          {
+            "in": "formData",
+            "name": "name",
+            "type": "string",
+            "description": "demo: Hello",
+            "required": true
+          },
+          {
+            "in": "formData",
+            "name": "lastname",
+            "type": "string",
+            "description": "demo: World",
+            "required": true
+          },
+          {
+            "in": "formData",
+            "name": "telephone",
+            "type": "string",
+            "description": "demo: 0812345678",
+            "required": true
+          },
+          {
+            "in": "formData",
+            "name": "device_id",
+            "type": "string",
+            "description": "demo: eC0gAdkLT9w:APA91bHs6PXTOcJ-WgpDqKsmbdbjJmI-lgDqAENU6pOl3oedpXrOfnZpnh4PyxItpPA30hzuLr6TtvBFxZS3ImT2ms6dpuqGFiQypFBf9OkNzCV8tCf-Erj7GThEZL5Rf9h5yem2VlA9",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      }
+    },
+    "/v1/auth/login": {
+      "post": {
+        "tags": [
+          "Core - Auth"
+        ],
+        "summary": "User Login",
+        "description": "",
+        "operationId": "AuthLogin",
+        "consumes": [
+          "multipart/form-data"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "formData",
+            "name": "email",
+            "type": "string",
+            "description": "demo core@test.com",
+            "required": true
+          },
+          {
+            "in": "formData",
+            "name": "password",
+            "type": "string",
+            "description": "demo: 123456",
+            "required": true
+          },
+          {
+            "in": "formData",
+            "name": "device_id",
+            "type": "string",
+            "description": "demo: eC0gAdkLT9w:APA91bHs6PXTOcJ-WgpDqKsmbdbjJmI-lgDqAENU6pOl3oedpXrOfnZpnh4PyxItpPA30hzuLr6TtvBFxZS3ImT2ms6dpuqGFiQypFBf9OkNzCV8tCf-Erj7GThEZL5Rf9h5yem2VlA9",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      }
+    },
+    "/v1/auth/login_facebook": {
+      "post": {
+        "tags": [
+          "Core - Auth"
+        ],
+        "summary": "Facebook Login",
+        "description": "Use this url to login https://api.saijo-denki.com/user_authentication",
+        "operationId": "facebooklogin",
+        "consumes": [
+          "multipart/form-data"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "formData",
+            "name": "fb_token",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "device_id",
+            "type": "string",
+            "description": "demo: eC0gAdkLT9w:APA91bHs6PXTOcJ-WgpDqKsmbdbjJmI-lgDqAENU6pOl3oedpXrOfnZpnh4PyxItpPA30hzuLr6TtvBFxZS3ImT2ms6dpuqGFiQypFBf9OkNzCV8tCf-Erj7GThEZL5Rf9h5yem2VlA9",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      }
+    },
+    "/v1/user": {
+      "get": {
+        "tags": [
+          "Core - User"
+        ],
+        "summary": "Get User Information",
+        "description": "",
+        "operationId": "getUserInfo",
+        "consumes": [
+          "multipart/form-data"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "405": {
+            "description": "Invalid input"
+          }
+        },
+        "security": [
+          {
+            "auth_token": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "Core - User"
+        ],
+        "summary": "Update User Information",
+        "description": "",
+        "operationId": "postUserInfo",
+        "consumes": [
+          "multipart/form-data"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "formData",
+            "name": "profile_img",
+            "type": "file",
+            "description": "Profile image"
+          },
+          {
+            "in": "formData",
+            "name": "name",
+            "type": "string",
+            "description": "Name"
+          },
+          {
+            "in": "formData",
+            "name": "lastname",
+            "type": "string",
+            "description": "Lastname"
+          },
+          {
+            "in": "formData",
+            "name": "tel",
+            "type": "string",
+            "description": "Tel"
+          },
+          {
+            "in": "formData",
+            "name": "email",
+            "type": "string",
+            "description": "Email"
+          },
+          {
+            "in": "formData",
+            "name": "latitude",
+            "type": "string",
+            "description": "Latitude"
+          },
+          {
+            "in": "formData",
+            "name": "longitude",
+            "type": "string",
+            "description": "Longitude"
+          },
+          {
+            "in": "formData",
+            "name": "address",
+            "type": "string",
+            "description": "Address"
+          },
+          {
+            "in": "formData",
+            "name": "district",
+            "type": "string",
+            "description": "District"
+          },
+          {
+            "in": "formData",
+            "name": "province",
+            "type": "string",
+            "description": "Province"
+          },
+          {
+            "in": "formData",
+            "name": "postal_code",
+            "type": "string",
+            "description": "Postal Code"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "405": {
+            "description": "Invalid input"
+          }
+        },
+        "security": [
+          {
+            "auth_token": []
+          }
+        ]
+      }
+    },
+    "/v1/rating": {
+      "put": {
+        "tags": [
+          "Core - User"
+        ],
+        "summary": "Rate the technician",
+        "description": "",
+        "operationId": "rating",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Rating",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Rating"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "security": [
+          {
+            "auth_token": []
+          }
+        ]
+      }
+    },
+    "/v1/cus_tech": {
+      "get": {
+        "tags": [
+          "Core - User"
+        ],
+        "summary": "Get Personal Technician",
+        "description": "",
+        "operationId": "get_cus_tech",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "security": [
+          {
+            "auth_token": []
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "Core - User"
+        ],
+        "summary": "Update Personal Technician",
+        "description": "",
+        "operationId": "cus_tech",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Tech ID",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/TechID"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "security": [
+          {
+            "auth_token": []
+          }
+        ]
+      }
+    },
+    "/v1/user/technician_online": {
+      "get": {
+        "tags": [
+          "Core - User"
+        ],
+        "summary": "Technician Online",
+        "description": "",
+        "operationId": "tech_online",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "security": [
+          {
+            "auth_token": []
+          }
+        ]
+      }
+    },
+    "/v1/user/technician_info/{tech_id}": {
+      "get": {
+        "tags": [
+          "Core - User"
+        ],
+        "summary": "Technician Infomation",
+        "description": "",
+        "operationId": "tech_information",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/tech_id"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "security": [
+          {
+            "auth_token": []
+          }
+        ]
+      }
+    },
+    "/v1/user/user_setting": {
+      "post": {
+        "tags": [
+          "Core - User"
+        ],
+        "summary": "User Setting",
+        "description": "",
+        "operationId": "user_setting",
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "multipart/form-data"
+        ],
+        "parameters": [
+          {
+            "in": "formData",
+            "name": "serial",
+            "type": "string",
+            "description": "demo: 2810F00000002"
+          },
+          {
+            "in": "formData",
+            "name": "cus_function",
+            "type": "string",
+            "description": "demo: WR,Engineer,GPS,Control,Energy"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "security": [
+          {
+            "auth_token": []
+          }
+        ]
+      }
+    },
+    "/v1/jobs/job": {
+      "post": {
+        "tags": [
+          "Core - Jobs"
+        ],
+        "summary": "Create Job",
+        "description": "",
+        "operationId": "createJob",
+        "consumes": [
+          "multipart/form-data"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "formData",
+            "name": "tech_id",
+            "type": "string",
+            "description": "Tech ID"
+          },
+          {
+            "in": "formData",
+            "name": "serial",
+            "type": "string",
+            "description": "Serial",
+            "required": true
+          },
+          {
+            "in": "formData",
+            "name": "symptom",
+            "type": "string",
+            "description": "Symptom"
+          },
+          {
+            "in": "formData",
+            "name": "appointment_datetime",
+            "type": "string",
+            "format": "date-time",
+            "description": "Appointment datetime",
+            "required": true
+          },
+          {
+            "in": "formData",
+            "name": "telephone",
+            "type": "string",
+            "description": "Telephone",
+            "required": true
+          },
+          {
+            "in": "formData",
+            "name": "latitude",
+            "type": "string",
+            "description": "latitude",
+            "required": true
+          },
+          {
+            "in": "formData",
+            "name": "longitude",
+            "type": "string",
+            "description": "longitude",
+            "required": true
+          },
+          {
+            "in": "formData",
+            "name": "type",
+            "type": "string",
+            "description": "type",
+            "enum": [
+              1,
+              2,
+              3
+            ],
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "405": {
+            "description": "Invalid input"
+          }
+        },
+        "security": [
+          {
+            "auth_token": []
+          }
+        ]
+      }
+    },
+    "/v1/jobs/job_area": {
+      "post": {
+        "tags": [
+          "Core - Jobs"
+        ],
+        "summary": "Send job to technician in the area",
+        "description": "",
+        "operationId": "areaJob",
+        "consumes": [
+          "multipart/form-data"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "405": {
+            "description": "Invalid input"
+          }
+        },
+        "security": [
+          {
+            "auth_token": []
+          }
+        ]
+      }
+    },
+    "/v1/jobs/select_tech/{tech_id}": {
+      "post": {
+        "tags": [
+          "Core - Jobs"
+        ],
+        "summary": "Send job to technician",
+        "description": "",
+        "operationId": "selectTech",
+        "consumes": [
+          "multipart/form-data"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/tech_id"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "405": {
+            "description": "Invalid input"
+          }
+        },
+        "security": [
+          {
+            "auth_token": []
+          }
+        ]
+      }
+    },
+    "/v1/jobs/tech_around": {
+      "get": {
+        "tags": [
+          "Core - Jobs"
+        ],
+        "summary": "Customer Cancel Job",
+        "description": "Get technician around customer range.",
+        "operationId": "tech_around",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "security": [
+          {
+            "auth_token": []
+          }
+        ]
+      }
+    },
+    "/v1/jobs/job_cancel/{job_id}": {
+      "put": {
+        "tags": [
+          "Core - Jobs"
+        ],
+        "summary": "Customer Cancel Job",
+        "description": "Customer Cancel Job",
+        "operationId": "cus_cancel_job",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/job_id"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "security": [
+          {
+            "auth_token": []
+          }
+        ]
+      }
+    },
+    "/v1/jobs/cancel_create_job/{job_id}": {
+      "put": {
+        "tags": [
+          "Core - Jobs"
+        ],
+        "summary": "Customer Cancel Job",
+        "description": "Customer Cancel Job",
+        "operationId": "cancel_create_job",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/job_id"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "security": [
+          {
+            "auth_token": []
+          }
+        ]
+      }
+    },
+    "/v1/jobs/tech_province": {
+      "post": {
+        "tags": [
+          "Core - Jobs"
+        ],
+        "summary": "Search technician in province",
+        "description": "Search technician in province.",
+        "operationId": "tech_province",
+        "consumes": [
+          "multipart/form-data"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "formData",
+            "name": "province",
+            "type": "string",
+            "description": "Province",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "security": [
+          {
+            "auth_token": []
+          }
+        ]
+      }
+    },
+    "/v1/jobs/cus_job_info/{job_id}": {
+      "get": {
+        "tags": [
+          "Core - Jobs"
+        ],
+        "summary": "Customer Job",
+        "description": "Customer job information.",
+        "operationId": "cus_job_info",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/job_id"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "security": [
+          {
+            "auth_token": []
+          }
+        ]
+      }
+    },
+    "/v1/jobs/cus_job_list": {
+      "get": {
+        "tags": [
+          "Core - Jobs"
+        ],
+        "summary": "Customer Job List",
+        "description": "Customer job list.",
+        "operationId": "cus_job_list",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "security": [
+          {
+            "auth_token": []
+          }
+        ]
+      }
+    },
+    "/v1/jobs/cus_history": {
+      "get": {
+        "tags": [
+          "Core - Jobs"
+        ],
+        "summary": "Customer Job History",
+        "description": "Customer job history.",
+        "operationId": "cus_job_history",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "security": [
+          {
+            "auth_token": []
+          }
+        ]
+      }
+    },
+    "/v1/jobs/symptoms": {
+      "get": {
+        "tags": [
+          "Core - Jobs"
+        ],
+        "summary": "Symptoms List",
+        "description": "Symptoms List.",
+        "operationId": "symptomsList",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "security": [
+          {
+            "auth_token": []
+          }
+        ]
+      }
+    },
+    "/v1/jobs/service_list": {
+      "get": {
+        "tags": [
+          "Core - Jobs"
+        ],
+        "summary": "Service List",
+        "description": "Service List.",
+        "operationId": "serviceList",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "security": [
+          {
+            "auth_token": []
+          }
+        ]
+      }
+    },
+    "/v1/product/device": {
+      "get": {
+        "tags": [
+          "Core - Product"
+        ],
+        "summary": "Device lists",
+        "description": "Device lists.",
+        "operationId": "getDevice",
+        "consumes": [
+          "multipart/form-data"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "security": [
+          {
+            "auth_token": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "Core - Product"
+        ],
+        "summary": "Add device",
+        "description": "Add device.",
+        "operationId": "postDevice",
+        "consumes": [
+          "multipart/form-data"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "formData",
+            "name": "serial",
+            "type": "string",
+            "description": "demo: 2810F00000002",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "security": [
+          {
+            "auth_token": []
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "Core - Product"
+        ],
+        "summary": "Remove device",
+        "description": "Remove device.",
+        "operationId": "deleteDevice",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "demo: 2810F00000002",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Serial"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "security": [
+          {
+            "auth_token": []
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "Core - Product"
+        ],
+        "summary": "Update Command",
+        "description": "Update Command",
+        "operationId": "updateCommand",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "serial: 2810F00000002, cmd: 434d442b000000000000000000000000000000000000000000000000000000000000000080020000000000000000000000000000000000000000000000000000",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Cmd"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "security": [
+          {
+            "auth_token": []
+          }
+        ]
+      }
+    },
+    "/v1/product/ac_management": {
+      "put": {
+        "tags": [
+          "Core - Product"
+        ],
+        "summary": "AC Management",
+        "description": "AC Management",
+        "operationId": "ac_management",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/AC_Management"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "security": [
+          {
+            "auth_token": []
+          }
+        ]
+      }
+    },
+    "/v1/product/air_type/{serial}": {
+      "get": {
+        "tags": [
+          "Core - Product"
+        ],
+        "summary": "Air Type",
+        "description": "Air type.",
+        "operationId": "getAirType",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/serial"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "security": [
+          {
+            "auth_token": []
+          }
+        ]
+      }
+    },
+    "/v1/energy/energy_day/{serial}": {
+      "get": {
+        "tags": [
+          "Core - Energy"
+        ],
+        "summary": "Electric bill last 30 days.",
+        "description": "Electric bill last 30 days.",
+        "operationId": "getEnergyDay",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/serial"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "security": [
+          {
+            "auth_token": []
+          }
+        ]
+      }
+    },
+    "/v1/energy/energy_month/{serial}": {
+      "get": {
+        "tags": [
+          "Core - Energy"
+        ],
+        "summary": "Electric bill last 12 months.",
+        "description": "Electric bill last 12 months.",
+        "operationId": "getEnergyMonth",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/serial"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "security": [
+          {
+            "auth_token": []
+          }
+        ]
+      }
+    },
+    "/v1/technician": {
+      "post": {
+        "tags": [
+          "Club - Auth"
+        ],
+        "summary": "Technician Register",
+        "description": "Technician Register",
+        "operationId": "TechRegister",
+        "consumes": [
+          "multipart/form-data"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "formData",
+            "name": "email",
+            "type": "string",
+            "description": "demo anon.joey@gmail.com",
+            "required": true
+          },
+          {
+            "in": "formData",
+            "name": "password",
+            "type": "string",
+            "description": "demo: 123456",
+            "required": true
+          },
+          {
+            "in": "formData",
+            "name": "name",
+            "type": "string",
+            "description": "demo: Hello",
+            "required": true
+          },
+          {
+            "in": "formData",
+            "name": "lastname",
+            "type": "string",
+            "description": "demo: World",
+            "required": true
+          },
+          {
+            "in": "formData",
+            "name": "telephone",
+            "type": "string",
+            "description": "demo: 0812345678",
+            "required": true
+          },
+          {
+            "in": "formData",
+            "name": "device_id",
+            "type": "string",
+            "description": "demo: eC0gAdkLT9w:APA91bHs6PXTOcJ-WgpDqKsmbdbjJmI-lgDqAENU6pOl3oedpXrOfnZpnh4PyxItpPA30hzuLr6TtvBFxZS3ImT2ms6dpuqGFiQypFBf9OkNzCV8tCf-Erj7GThEZL5Rf9h5yem2VlA9",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      }
+    },
+    "/v1/technician/login": {
+      "post": {
+        "tags": [
+          "Club - Auth"
+        ],
+        "summary": "Technician Login",
+        "description": "Technician Login",
+        "operationId": "TechLogin",
+        "consumes": [
+          "multipart/form-data"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "formData",
+            "name": "email",
+            "type": "string",
+            "description": "demo anon.joey@gmail.com",
+            "required": true
+          },
+          {
+            "in": "formData",
+            "name": "password",
+            "type": "string",
+            "description": "demo: 123456",
+            "required": true
+          },
+          {
+            "in": "formData",
+            "name": "device_id",
+            "type": "string",
+            "description": "demo: eC0gAdkLT9w:APA91bHs6PXTOcJ-WgpDqKsmbdbjJmI-lgDqAENU6pOl3oedpXrOfnZpnh4PyxItpPA30hzuLr6TtvBFxZS3ImT2ms6dpuqGFiQypFBf9OkNzCV8tCf-Erj7GThEZL5Rf9h5yem2VlA9",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      }
+    },
+    "/v1/technician/login_facebook": {
+      "post": {
+        "tags": [
+          "Club - Auth"
+        ],
+        "summary": "Technician Facebook Login",
+        "description": "Use this url to login https://api.saijo-denki.com/user_authentication",
+        "operationId": "TechFBLogin",
+        "consumes": [
+          "multipart/form-data"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "formData",
+            "name": "fb_token",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "device_id",
+            "type": "string",
+            "description": "demo eC0gAdkLT9w:APA91bHs6PXTOcJ-WgpDqKsmbdbjJmI-lgDqAENU6pOl3oedpXrOfnZpnh4PyxItpPA30hzuLr6TtvBFxZS3ImT2ms6dpuqGFiQypFBf9OkNzCV8tCf-Erj7GThEZL5Rf9h5yem2VlA9",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      }
+    },
+    "/v1/technician/info": {
+      "get": {
+        "tags": [
+          "Club - User"
+        ],
+        "summary": "Technician Infomation",
+        "description": "Technician Infomation",
+        "operationId": "get_tech_info",
+        "consumes": [
+          "multipart/form-data"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "security": [
+          {
+            "auth_token": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "Club - User"
+        ],
+        "summary": "Update Technician Infomation",
+        "description": "Update Technician Infomation",
+        "operationId": "post_tech_info",
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "multipart/form-data"
+        ],
+        "parameters": [
+          {
+            "in": "formData",
+            "name": "profile_img",
+            "type": "file",
+            "description": "Profile image"
+          },
+          {
+            "in": "formData",
+            "name": "name",
+            "type": "string",
+            "description": "Name"
+          },
+          {
+            "in": "formData",
+            "name": "lastname",
+            "type": "string",
+            "description": "Lastname"
+          },
+          {
+            "in": "formData",
+            "name": "tel",
+            "type": "string",
+            "description": "Tel"
+          },
+          {
+            "in": "formData",
+            "name": "address",
+            "type": "string",
+            "description": "Address"
+          },
+          {
+            "in": "formData",
+            "name": "district",
+            "type": "string",
+            "description": "District"
+          },
+          {
+            "in": "formData",
+            "name": "province",
+            "type": "string",
+            "description": "Province"
+          },
+          {
+            "in": "formData",
+            "name": "postal_code",
+            "type": "string",
+            "description": "Postal Code"
+          },
+          {
+            "in": "formData",
+            "name": "latitude",
+            "type": "string",
+            "description": "Latitude"
+          },
+          {
+            "in": "formData",
+            "name": "longitude",
+            "type": "string",
+            "description": "Longitude"
+          },
+          {
+            "in": "formData",
+            "name": "saijo_certification",
+            "type": "string",
+            "description": "Saijo Certification"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "security": [
+          {
+            "auth_token": []
+          }
+        ]
+      }
+    },
+    "/v1/technicians": {
+      "get": {
+        "tags": [
+          "Club - User"
+        ],
+        "summary": "Technician List",
+        "description": "Technician List",
+        "operationId": "get_tech_list",
+        "consumes": [
+          "multipart/form-data"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "security": [
+          {
+            "auth_token": []
+          }
+        ]
+      }
+    },
+    "/v1/jobs": {
+      "get": {
+        "tags": [
+          "Club - Jobs"
+        ],
+        "summary": "Technician Jobs List (Upcoming)",
+        "description": "Technician Jobs List",
+        "operationId": "get_tech_jobs_list",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "security": [
+          {
+            "auth_token": []
+          }
+        ]
+      }
+    },
+    "/v1/jobs/recommend": {
+      "get": {
+        "tags": [
+          "Club - Jobs"
+        ],
+        "summary": "Technician Jobs Recommend List",
+        "description": "Technician Jobs Recommend List",
+        "operationId": "get_tech_jobs_recommend_list",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "security": [
+          {
+            "auth_token": []
+          }
+        ]
+      }
+    },
+    "/v1/jobs/history": {
+      "get": {
+        "tags": [
+          "Club - Jobs"
+        ],
+        "summary": "Technician History Jobs List",
+        "description": "Technician History Jobs List",
+        "operationId": "get_tech_history_jobs_list",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "security": [
+          {
+            "auth_token": []
+          }
+        ]
+      }
+    },
+    "/v1/jobs/job_info/{job_id}": {
+      "get": {
+        "tags": [
+          "Club - Jobs"
+        ],
+        "summary": "Technician Jobs Info",
+        "description": "Technician Jobs Info",
+        "operationId": "get_tech_jobs_info",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/job_id"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "security": [
+          {
+            "auth_token": []
+          }
+        ]
+      }
+    },
+    "/v1/jobs/job_accept/{job_id}": {
+      "put": {
+        "tags": [
+          "Club - Jobs"
+        ],
+        "summary": "Technician Accept Job",
+        "description": "Technician Accept Job",
+        "operationId": "tech_accept_job",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/job_id"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "403": {
+            "description": "FORBIDDEN"
+          }
+        },
+        "security": [
+          {
+            "auth_token": []
+          }
+        ]
+      }
+    },
+    "/v1/jobs/job_complete/{job_id}": {
+      "put": {
+        "tags": [
+          "Club - Jobs"
+        ],
+        "summary": "Technician Complete Job",
+        "description": "Technician Complete Job",
+        "operationId": "tech_complete_job",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/job_id"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "security": [
+          {
+            "auth_token": []
+          }
+        ]
+      }
+    },
+    "/v1/jobs/deny/{job_id}": {
+      "delete": {
+        "tags": [
+          "Club - Jobs"
+        ],
+        "summary": "Technician Deny Job",
+        "description": "Technician Deny Job",
+        "operationId": "tech_deny_job",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/job_id"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "security": [
+          {
+            "auth_token": []
+          }
+        ]
+      }
+    },
+    "/v1/password": {
+      "post": {
+        "tags": [
+          "Password"
+        ],
+        "summary": "Technician Forgot Password",
+        "description": "Technician Forgot Password",
+        "operationId": "forgot_password",
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "multipart/form-data"
+        ],
+        "parameters": [
+          {
+            "in": "formData",
+            "name": "email",
+            "type": "string",
+            "description": "demo anon.joey@gmail.com",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Password"
+        ],
+        "summary": "Technician Change Password",
+        "description": "Technician Change Password",
+        "operationId": "change_password",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Technician Change Password",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Password"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "security": [
+          {
+            "auth_token": []
+          }
+        ]
+      }
+    },
+    "/v1/technician/notifications": {
+      "get": {
+        "tags": [
+          "Club - Notification"
+        ],
+        "summary": "Get notification",
+        "description": "",
+        "operationId": "getTechNoti",
+        "consumes": [
+          "multipart/form-data"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "405": {
+            "description": "Invalid input"
+          }
+        },
+        "security": [
+          {
+            "auth_token": []
+          }
+        ]
+      }
+    },
+    "/v1/technician/notification/{job_type}": {
+      "put": {
+        "tags": [
+          "Club - Notification"
+        ],
+        "summary": "Update all notifications",
+        "description": "",
+        "operationId": "putTechNotIAll",
+        "consumes": [
+          "multipart/form-data"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/job_type"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "405": {
+            "description": "Invalid input"
+          }
+        },
+        "security": [
+          {
+            "auth_token": []
+          }
+        ]
+      }
+    },
+    "/v1/technician/notification/remove/{job_id}": {
+      "delete": {
+        "tags": [
+          "Club - Notification"
+        ],
+        "summary": "Remove notifications",
+        "description": "",
+        "operationId": "deleteTechNoti",
+        "consumes": [
+          "multipart/form-data"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/job_id"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "405": {
+            "description": "Invalid input"
+          }
+        },
+        "security": [
+          {
+            "auth_token": []
+          }
+        ]
+      }
+    },
+    "/v1/technician/notification/read/{job_id}": {
+      "put": {
+        "tags": [
+          "Club - Notification"
+        ],
+        "summary": "Update notification",
+        "description": "",
+        "operationId": "putTechNoti",
+        "consumes": [
+          "multipart/form-data"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/job_id"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "405": {
+            "description": "Invalid input"
+          }
+        },
+        "security": [
+          {
+            "auth_token": []
+          }
+        ]
+      }
+    },
+    "/v1/technician/errors": {
+      "get": {
+        "tags": [
+          "Club - Error Code"
+        ],
+        "summary": "Get errors code",
+        "description": "",
+        "operationId": "getErrorCodes",
+        "consumes": [
+          "multipart/form-data"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "405": {
+            "description": "Invalid input"
+          }
+        },
+        "security": [
+          {
+            "auth_token": []
+          }
+        ]
+      }
+    },
+    "/v1/technician/error/{error_code}": {
+      "get": {
+        "tags": [
+          "Club - Error Code"
+        ],
+        "summary": "Get error code",
+        "description": "",
+        "operationId": "getErrorCode",
+        "parameters": [
+          {
+            "$ref": "#/parameters/error_code"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "405": {
+            "description": "Invalid input"
+          }
+        },
+        "security": [
+          {
+            "auth_token": []
+          }
+        ]
+      }
+    },
+    "/v1/technician/ewarranty/validate": {
+      "post": {
+        "tags": [
+          "E-Warranty"
+        ],
+        "summary": "Validate & Active Product",
+        "description": "Validate & Active Product",
+        "operationId": "validateProduct",
+        "consumes": [
+          "multipart/form-data"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "formData",
+            "name": "serial",
+            "type": "string",
+            "description": "demo : 1801C00689000",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "405": {
+            "description": "Invalid input"
+          }
+        },
+        "security": [
+          {
+            "auth_token": []
+          }
+        ]
+      }
+    },
+    "/v1/technician/ewarranty/warranty_info": {
+      "post": {
+        "tags": [
+          "E-Warranty"
+        ],
+        "summary": "E-Warranty infomation",
+        "description": "E-Warranty infomation",
+        "operationId": "techInfoWarranty",
+        "consumes": [
+          "multipart/form-data"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "formData",
+            "name": "indoor_serial",
+            "type": "string",
+            "description": "demo : 1801F00689001",
+            "required": true
+          },
+          {
+            "in": "formData",
+            "name": "outdoor_serial",
+            "type": "string",
+            "description": "demo : 1801C00689000",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "405": {
+            "description": "Invalid input"
+          }
+        },
+        "security": [
+          {
+            "auth_token": []
+          }
+        ]
+      }
+    },
+    "/v1/summary/{job_id}": {
+      "get": {
+        "tags": [
+          "Club - Summary"
+        ],
+        "summary": "Summary Jobs",
+        "description": "Summary Jobs",
+        "operationId": "summaryJob",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/job_id"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "security": [
+          {
+            "auth_token": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "Club - Summary"
+        ],
+        "summary": "Summary Jobs",
+        "description": "",
+        "operationId": "postsummaryJob",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Summary Form",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Summary"
+            }
+          },
+          {
+            "$ref": "#/parameters/job_id"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "security": [
+          {
+            "auth_token": []
+          }
+        ]
+      }
+    },
+    "/v1/summary/upload_pic/{job_id}/{serial}": {
+      "post": {
+        "tags": [
+          "Club - Summary"
+        ],
+        "summary": "Summary upload image",
+        "description": "",
+        "operationId": "uploadSummaryImg",
+        "consumes": [
+          "multipart/form-data"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/job_id"
+          },
+          {
+            "$ref": "#/parameters/serial"
+          },
+          {
+            "in": "formData",
+            "name": "before",
+            "type": "file",
+            "description": "Before image"
+          },
+          {
+            "in": "formData",
+            "name": "after",
+            "type": "file",
+            "description": "After image"
+          },
+          {
+            "in": "formData",
+            "name": "signature",
+            "type": "file",
+            "description": "Signature image"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "405": {
+            "description": "Invalid input"
+          }
+        },
+        "security": [
+          {
+            "auth_token": []
+          }
+        ]
+      }
+    },
+    "/v1/logout": {
+      "post": {
+        "tags": [
+          "Logout"
+        ],
+        "summary": "Logouty",
+        "description": "Logout",
+        "operationId": "logout",
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "multipart/form-data"
+        ],
+        "parameters": [
+          {
+            "in": "formData",
+            "name": "device_id",
+            "type": "string",
+            "description": "demo: eC0gAdkLT9w:APA91bHs6PXTOcJ-WgpDqKsmbdbjJmI-lgDqAENU6pOl3oedpXrOfnZpnh4PyxItpPA30hzuLr6TtvBFxZS3ImT2ms6dpuqGFiQypFBf9OkNzCV8tCf-Erj7GThEZL5Rf9h5yem2VlA9",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "security": [
+          {
+            "auth_token": []
+          }
+        ]
+      }
+    }
+  },
+  "parameters": {
+    "user_id": {
+      "name": "user_id",
+      "description": "User ID",
+      "in": "path",
+      "type": "number",
+      "required": true
+    },
+    "job_id": {
+      "name": "job_id",
+      "description": "Job ID",
+      "in": "path",
+      "type": "number",
+      "required": true
+    },
+    "tech_id": {
+      "name": "tech_id",
+      "description": "Tech ID",
+      "in": "path",
+      "type": "number",
+      "required": true
+    },
+    "error_code": {
+      "name": "error_code",
+      "description": "Error Code",
+      "in": "path",
+      "type": "number",
+      "required": true
+    },
+    "job_type": {
+      "name": "job_type",
+      "description": "Job Type",
+      "in": "path",
+      "type": "number",
+      "required": true
+    },
+    "serial": {
+      "name": "serial",
+      "description": "demo: 2810F00000002",
+      "in": "path",
+      "type": "string",
+      "required": true
+    },
+    "device_id": {
+      "name": "device_id",
+      "description": "demo: eC0gAdkLT9w:APA91bHs6PXTOcJ-WgpDqKsmbdbjJmI-lgDqAENU6pOl3oedpXrOfnZpnh4PyxItpPA30hzuLr6TtvBFxZS3ImT2ms6dpuqGFiQypFBf9OkNzCV8tCf-Erj7GThEZL5Rf9h5yem2VlA9",
+      "in": "path",
+      "type": "string",
+      "required": true
+    }
+  },
+  "securityDefinitions": {
+    "petstore_auth": {
+      "type": "oauth2",
+      "authorizationUrl": "http://petstore.swagger.io/oauth/dialog",
+      "flow": "implicit",
+      "scopes": {
+        "write:pets": "modify pets in your account",
+        "read:pets": "read your pets"
+      }
+    },
+    "api_key": {
+      "type": "apiKey",
+      "name": "api_key",
+      "in": "header"
+    },
+    "auth_token": {
+      "type": "apiKey",
+      "name": "Authorization",
+      "in": "header"
+    }
+  },
+  "definitions": {
+    "Password": {
+      "type": "object",
+      "properties": {
+        "password": {
+          "type": "string"
+        }
+      },
+      "xml": {
+        "name": "User"
+      }
+    },
+    "Rating": {
+      "type": "object",
+      "properties": {
+        "rating": {
+          "type": "number",
+          "format": "float"
+        }
+      },
+      "xml": {
+        "name": "User"
+      }
+    },
+    "TechID": {
+      "type": "object",
+      "properties": {
+        "tech_id": {
+          "type": "number"
+        }
+      },
+      "xml": {
+        "name": "User"
+      }
+    },
+    "Summary": {
+      "type": "object",
+      "properties": {
+        "form": {
+          "type": "string"
+        }
+      },
+      "xml": {
+        "name": "Summary"
+      }
+    },
+    "Serial": {
+      "type": "object",
+      "properties": {
+        "serial": {
+          "type": "string"
+        }
+      },
+      "xml": {
+        "name": "Serial"
+      }
+    },
+    "Cmd": {
+      "type": "object",
+      "properties": {
+        "serial": {
+          "type": "string"
+        },
+        "command": {
+          "type": "string"
+        }
+      },
+      "xml": {
+        "name": "Cmd"
+      }
+    },
+    "AC_Management": {
+      "type": "object",
+      "properties": {
+        "serial": {
+          "type": "string"
+        },
+        "timer": {
+          "type": "string"
+        },
+        "latitude": {
+          "type": "string"
+        },
+        "longitude": {
+          "type": "string"
+        },
+        "power": {
+          "type": "string"
+        },
+        "energy": {
+          "type": "string"
+        },
+        "set_temp": {
+          "type": "number"
+        },
+        "group": {
+          "type": "number"
+        },
+        "enable": {
+          "type": "number"
+        },
+        "utc_zone": {
+          "type": "string"
+        },
+        "mgr_id": {
+          "type": "number"
+        },
+        "mgr_delete": {
+          "type": "number"
+        },
+        "mgr_wd": {
+          "type": "number"
+        }
+      },
+      "xml": {
+        "name": "AC_Management"
+      }
+    }
+  }
+}
